@@ -2353,7 +2353,7 @@
             "dist": {
                 "type": "path",
                 "url": "../narsil-cms",
-                "reference": "129553ab1a5cc01cab8d42caebb1a700b39a9963"
+                "reference": "c5edfb7fa5d933a07ce13e9595f88569f7979218"
             },
             "require": {
                 "inertiajs/inertia-laravel": "^2.0",
@@ -2362,15 +2362,6 @@
                 "laravel/tinker": "^2.0",
                 "php": "^8.2",
                 "tightenco/ziggy": "^2.0"
-            },
-            "require-dev": {
-                "fakerphp/faker": "^1.0",
-                "laravel/pail": "^1.0",
-                "laravel/pint": "^1.0",
-                "laravel/sail": "^1.0",
-                "mockery/mockery": "^1.0",
-                "nunomaduro/collision": "^8.0",
-                "phpunit/phpunit": "^12.0"
             },
             "type": "library",
             "extra": {
