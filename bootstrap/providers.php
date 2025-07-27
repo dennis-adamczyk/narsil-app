@@ -8,6 +8,7 @@ use Narsil\Providers\FieldServiceProvider;
 use Narsil\Providers\FormRequestServiceProvider;
 use Narsil\Providers\FormServiceProvider;
 use Narsil\Providers\FortifyServiceProvider;
+use Narsil\Providers\TableServiceProvider;
 
 #endregion
 
@@ -18,4 +19,5 @@ return [
     FormServiceProvider::class,
     FormRequestServiceProvider::class,
     FortifyServiceProvider::class,
+    TableServiceProvider::class,
 ];
