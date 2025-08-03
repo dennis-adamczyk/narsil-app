@@ -18,6 +18,6 @@
     "target": "esnext",
     "types": ["vite/client"]
   },
-  "include": ["resources/js/**/*", "vendor/narsil/cms/resources/js/**/*.tsx"],
+  "include": ["resources/js/**/*", "vendor/narsil/cms/resources/js/**/*"],
   "exclude": ["node_modules"]
 }

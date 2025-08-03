@@ -288,6 +288,9 @@ web_extra_exposed_ports:
 # 'use_dns_when_possible: false' can override the existing values, and
 hooks:
   post-start:
+    - exec: yarn
+      service: web
+      directory: /var/www/html/vendor/narsil/cms
     - exec: npm run dev
       service: web
       directory: /var/www/html
