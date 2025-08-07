@@ -70,4 +70,5 @@ ddev npm install
 ddev npm update
 ddev restart
 ddev start
+npm install -g npm-check-updates
 ncu -u -t minor
