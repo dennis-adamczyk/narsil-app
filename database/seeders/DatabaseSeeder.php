@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 #region USE
 
+use Database\Seeders\RoleSeeder;
+use Database\Seeders\TemplateSeeder;
+use Database\Seeders\UserSeeder;
 use Illuminate\Database\Seeder;
 
 #endregion
@@ -12,7 +15,7 @@ use Illuminate\Database\Seeder;
  * @version 1.0.0
  * @author Jonathan Rigaux
  */
-class DatabaseSeeder extends Seeder
+final class DatabaseSeeder extends Seeder
 {
     #region PUBLIC METHODS
 

@@ -4,17 +4,16 @@ namespace Database\Seeders;
 
 #region USE
 
+use Database\Factories\EntityFactory;
+use Database\Seeders\Templates\PageSeeder;
+use Database\Seeders\Templates\ProductSeeder;
 use Illuminate\Database\Seeder;
-use Narsil\Contracts\Fields\BuilderElement;
-use Narsil\Contracts\Fields\RichTextInput;
-use Narsil\Models\Elements\Block;
-use Narsil\Models\Elements\BlockElement;
-use Narsil\Models\Elements\Field;
-use Narsil\Models\Elements\FieldBlock;
+use Narsil\Models\Elements\Template;
+use Narsil\Models\Entities\Entity;
 
 #endregion
 
-class TemplateSeeder extends Seeder
+final class TemplateSeeder extends Seeder
 {
     #region PUBLIC METHODS
 
@@ -23,74 +22,47 @@ class TemplateSeeder extends Seeder
      */
     public function run(): void
     {
-        // Blocks
-        $richTextBlock = $this->createRichTextBlock();
+        $pageTemplate = new PageSeeder()->run();
+        $productTemplate = new ProductSeeder()->run();
 
-        // Fields
-        $builderField = $this->createBuilderField();
-
-        FieldBlock::create([
-            FieldBlock::BLOCK_ID => $richTextBlock->{Block::ID},
-            FieldBlock::FIELD_ID => $builderField->{Field::ID},
-        ]);
+        $this->createPage($pageTemplate);
+        $this->createProducts($productTemplate);
     }
 
     #endregion
 
-    #region PROTECTED METHODS
+    #region PRIVATE METHODS
 
     /**
-     * @return Block
+     * @param Template $template
+     *
+     * @return Entity
      */
-    protected function createContentBlock(): Block
+    private function createPage(Template $template): Entity
     {
-        $contentBlock = Block::create([
-            Block::NAME => 'Content',
-            Block::HANDLE => 'content',
-        ]);
+        $template = new ProductSeeder()->run();
 
-        return $contentBlock;
+        return EntityFactory::new()
+            ->create([
+                Entity::TEMPLATE_ID => $template->{Template::ID},
+            ]);
     }
 
     /**
-     * @return Field
+     * @param Template $template
+     *
+     * @return array<Entity>
      */
-    protected function createBuilderField(): Field
+    private function createProducts(Template $template): array
     {
-        $field = Field::create([
-            Field::NAME => 'Builder',
-            Field::HANDLE => 'builder',
-            Field::TYPE => BuilderElement::class,
-            Field::SETTINGS => app(BuilderElement::class),
-        ]);
+        $template = new ProductSeeder()->run();
 
-        return $field;
-    }
-
-    /**
-     * @return Block
-     */
-    protected function createRichTextBlock(): Block
-    {
-        $field = Field::create([
-            Field::NAME => 'Rich text',
-            Field::HANDLE => 'rich_text',
-            Field::TYPE => RichTextInput::class,
-            Field::SETTINGS => app(RichTextInput::class),
-        ]);
-
-        $block = Block::create([
-            Block::NAME => 'Rich text',
-            Block::HANDLE => 'rich_text',
-        ]);
-
-        $block->fields()->attach($field->{Field::ID}, [
-            BlockElement::HANDLE => $field->{Field::HANDLE},
-            BlockElement::NAME => $field->{Field::NAME},
-            BlockElement::POSITION => 0,
-        ]);
-
-        return $block;
+        return EntityFactory::new()
+            ->count(10)
+            ->create([
+                Entity::TEMPLATE_ID => $template->{Template::ID},
+            ])
+            ->toArray();
     }
 
     #endregion
