@@ -1,0 +1,16 @@
+scalar DateTime
+  @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Query {
+  user(id: Int! @eq): User @find
+  users: [User!]! @all
+}
+
+type User @model(class: "Narsil\\Models\\User") {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  email: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
