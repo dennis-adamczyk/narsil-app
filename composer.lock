@@ -2455,7 +2455,7 @@
             "dist": {
                 "type": "path",
                 "url": "../narsil-cms",
-                "reference": "c5251e213bf962badd52ea45d69d1d6e025e11eb"
+                "reference": "72ef65224de0852bc0c4daf7baf1c03730f18bf1"
             },
             "require": {
                 "inertiajs/inertia-laravel": "^2.0",

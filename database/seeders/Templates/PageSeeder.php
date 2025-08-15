@@ -28,8 +28,8 @@ final class PageSeeder extends Seeder
     public function run(): Template
     {
         $template = Template::create([
-            Template::HANDLE => 'page',
-            Template::NAME => 'Page',
+            Template::HANDLE => 'pages',
+            Template::NAME => 'Pages',
         ]);
 
         $this->createMainSection($template);
