@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 #region USE
 
-use Database\Factories\EntityFactory;
 use Database\Seeders\Templates\PageSeeder;
 use Database\Seeders\Templates\ProductSeeder;
 use Illuminate\Database\Seeder;
@@ -40,12 +39,15 @@ final class TemplateSeeder extends Seeder
      */
     private function createPage(Template $template): Entity
     {
-        $template = new ProductSeeder()->run();
+        $entity = new Entity([
+            Entity::ID => 1,
+        ]);
 
-        return EntityFactory::new()
-            ->create([
-                Entity::TEMPLATE_ID => $template->{Template::ID},
-            ]);
+        $entity->setTable($template->{Template::HANDLE});
+
+        $entity->save();
+
+        return $entity;
     }
 
     /**
@@ -55,14 +57,21 @@ final class TemplateSeeder extends Seeder
      */
     private function createProducts(Template $template): array
     {
-        $template = new ProductSeeder()->run();
+        $products = [];
 
-        return EntityFactory::new()
-            ->count(10)
-            ->create([
-                Entity::TEMPLATE_ID => $template->{Template::ID},
-            ])
-            ->toArray();
+        foreach (range(1, 10) as $index)
+        {
+            $product = new Entity([
+                Entity::ID => $index,
+                'title' => fake()->slug(),
+            ]);
+
+            $product->setTable($template->{Template::HANDLE});
+
+            $product->save();
+        }
+
+        return $products;
     }
 
     #endregion

@@ -21,8 +21,7 @@
     }
   ],
   "require": {
-    "narsil/cms": "dev-main",
-    "nuwave/lighthouse": "^6.62"
+    "narsil/cms": "dev-main"
   },
   "require-dev": {
     "fakerphp/faker": "^1.0",
