@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from "vite";
-import path, { dirname, resolve } from "node:path";
+import path, { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import laravel from "laravel-vite-plugin";
 import react from "@vitejs/plugin-react";
@@ -11,6 +11,9 @@ export default defineConfig(({ mode }) => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
 
   return {
+    optimizeDeps: {
+      exclude: ["@narsil-cms"],
+    },
     plugins: [
       laravel({
         input: ["resources/css/app.css", "resources/js/app.tsx"],
@@ -24,6 +27,7 @@ export default defineConfig(({ mode }) => {
         "@": path.join(__dirname, "/resources/js"),
         "@narsil-cms": path.join(__dirname, "/vendor/narsil/cms/resources/js"),
       },
+      dedupe: ["react", "react-dom"],
     },
     server: {
       allowedHosts: true,
