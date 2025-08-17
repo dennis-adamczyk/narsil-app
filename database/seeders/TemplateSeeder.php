@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 #region USE
 
+use Database\Seeders\Templates\EventSeeder;
 use Database\Seeders\Templates\PageSeeder;
-use Database\Seeders\Templates\ProductSeeder;
 use Illuminate\Database\Seeder;
 use Narsil\Models\Elements\Template;
 use Narsil\Models\Entities\Entity;
@@ -21,16 +21,42 @@ final class TemplateSeeder extends Seeder
      */
     public function run(): void
     {
+        $eventTemplate = new EventSeeder()->run();
         $pageTemplate = new PageSeeder()->run();
-        $productTemplate = new ProductSeeder()->run();
 
+        $this->createEvents($eventTemplate);
         $this->createPage($pageTemplate);
-        $this->createProducts($productTemplate);
     }
 
     #endregion
 
     #region PRIVATE METHODS
+
+    /**
+     * @param Template $template
+     *
+     * @return array<Entity>
+     */
+    private function createEvents(Template $template): array
+    {
+        $events = [];
+
+        foreach (range(1, 10) as $index)
+        {
+            $event = new Entity([
+                Entity::ID => $index,
+                'title' => fake()->slug(),
+            ]);
+
+            $event->setTable($template->{Template::HANDLE});
+
+            $event->save();
+
+            $events[] = $event;
+        }
+
+        return $events;
+    }
 
     /**
      * @param Template $template
@@ -48,30 +74,6 @@ final class TemplateSeeder extends Seeder
         $entity->save();
 
         return $entity;
-    }
-
-    /**
-     * @param Template $template
-     *
-     * @return array<Entity>
-     */
-    private function createProducts(Template $template): array
-    {
-        $products = [];
-
-        foreach (range(1, 10) as $index)
-        {
-            $product = new Entity([
-                Entity::ID => $index,
-                'title' => fake()->slug(),
-            ]);
-
-            $product->setTable($template->{Template::HANDLE});
-
-            $product->save();
-        }
-
-        return $products;
     }
 
     #endregion

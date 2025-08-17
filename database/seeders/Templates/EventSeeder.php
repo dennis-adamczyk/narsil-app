@@ -13,7 +13,7 @@ use Narsil\Models\Elements\TemplateSectionElement;
 
 #endregion
 
-final class ProductSeeder extends Seeder
+final class EventSeeder extends Seeder
 {
     #region PUBLIC METHODS
 
@@ -23,8 +23,8 @@ final class ProductSeeder extends Seeder
     public function run(): Template
     {
         $template = Template::create([
-            Template::HANDLE => 'products',
-            Template::NAME => 'Products',
+            Template::HANDLE => 'events',
+            Template::NAME => 'Events',
         ]);
 
         $this->createMainSection($template);
