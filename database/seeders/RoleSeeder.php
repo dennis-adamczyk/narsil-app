@@ -31,8 +31,7 @@ class RoleSeeder extends Seeder
     protected function createSuperAdminRole(): Role
     {
         $role = Role::create([
-            Role::HANDLE => 'super_admin',
-            Role::NAME => 'Super-Admin',
+            Role::NAME => 'super_admin',
         ]);
 
         return $role;
