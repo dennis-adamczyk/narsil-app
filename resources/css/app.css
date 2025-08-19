@@ -11,6 +11,8 @@
   --color-border: var(--border);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-constructive: var(--constructive);
+  --color-constructive-foreground: var(--constructive-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-foreground: var(--foreground);
