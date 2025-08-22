@@ -2,7 +2,25 @@
 
 ## Start Project
 
-Start the local development environment:
+### Composer
+
+Install dependencies:
+
+```bash
+ddev composer install
+```
+
+### Node
+
+Install dependencies:
+
+```bash
+ddev yarn
+```
+
+### DDEV
+
+Start the local environment:
 
 ```bash
 ddev start
