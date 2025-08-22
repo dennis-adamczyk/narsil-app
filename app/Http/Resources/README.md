@@ -4,8 +4,12 @@ https://laravel.com/docs/eloquent-resources
 
 ## Generating a Collection
 
-ddev artisan make:resource UserCollection
+```bash
+ddev artisan make:resource ExampleCollection
+```
 
 ## Generating a Resource
 
-ddev artisan make:resource UserResource
+```bash
+ddev artisan make:resource ExampleResource
+```

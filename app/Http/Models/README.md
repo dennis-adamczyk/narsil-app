@@ -4,4 +4,6 @@ https://laravel.com/docs/eloquent#generating-model-classes
 
 ## Generating a Model
 
-ddev artisan make:model User
+```bash
+ddev artisan make:model Example
+```

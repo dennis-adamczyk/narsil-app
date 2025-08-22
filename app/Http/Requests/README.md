@@ -4,4 +4,6 @@ https://laravel.com/docs/validation#form-request-validation
 
 ## Generating a Request
 
-ddev artisan make:request UserFormRequest
+```bash
+ddev artisan make:request ExampleRequest
+```

@@ -4,4 +4,6 @@ https://laravel.com/docs/migrations
 
 ## Generating a Migration
 
-ddev artisan make:migration users_table
+```bash
+ddev artisan make:migration examples_table
+```

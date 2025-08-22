@@ -4,4 +4,6 @@ https://laravel.com/docs/seeding
 
 ## Generating a Seeder
 
-ddev artisan make:seeder UserSeeder
+```bash
+ddev artisan make:seeder ExampleSeeder
+```

@@ -4,4 +4,6 @@ https://laravel.com/docs/eloquent-factories
 
 ## Generating a Factory
 
-ddev artisan make:factory UserFactory
+```bash
+ddev artisan make:factory ExampleFactory
+```

@@ -4,4 +4,6 @@ https://laravel.com/docs/providers
 
 ## Generating a Service Provider
 
-ddev artisan make:provider UserServiceProvider
+```bash
+ddev artisan make:provider ExampleServiceProvider
+```
