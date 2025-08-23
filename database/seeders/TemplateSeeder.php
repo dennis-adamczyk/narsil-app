@@ -21,8 +21,10 @@ final class TemplateSeeder extends Seeder
      */
     public function run(): void
     {
-        $eventTemplate = new EventSeeder()->run();
-        $pageTemplate = new PageSeeder()->run();
+        $eventTemplate = new EventSeeder()
+            ->run();
+        $pageTemplate = new PageSeeder()
+            ->run();
 
         $this->createEvents($eventTemplate);
         $this->createPage($pageTemplate);

@@ -4,8 +4,6 @@ namespace Database\Seeders\Templates;
 
 #region USE
 
-use Illuminate\Database\Seeder;
-use Narsil\Contracts\Fields\TextInput;
 use Narsil\Models\Elements\Field;
 use Narsil\Models\Elements\Template;
 use Narsil\Models\Elements\TemplateSection;
@@ -13,7 +11,7 @@ use Narsil\Models\Elements\TemplateSectionElement;
 
 #endregion
 
-final class EventSeeder extends Seeder
+final class EventSeeder extends ElementSeeder
 {
     #region PUBLIC METHODS
 
@@ -29,6 +27,12 @@ final class EventSeeder extends Seeder
 
         $this->createMainSection($template);
 
+        $template->refresh()->load([
+            Template::RELATION_SECTIONS . '.' . TemplateSection::RELATION_ELEMENTS,
+        ]);
+
+        $template->touch();
+
         return $template;
     }
 
@@ -43,43 +47,21 @@ final class EventSeeder extends Seeder
      */
     private function createMainSection(Template $template): TemplateSection
     {
-        $elements = [
-            $this->createTitleField(),
-        ];
+        $stringField = $this->getStringField();
 
-        $section = TemplateSection::create([
+        $templateSection = TemplateSection::firstOrCreate([
             TemplateSection::HANDLE => 'main',
             TemplateSection::NAME => 'Main',
             TemplateSection::TEMPLATE_ID => $template->{Template::ID},
         ]);
 
-        foreach ($elements as $position => $element)
-        {
-            TemplateSectionElement::create([
-                TemplateSectionElement::ELEMENT_ID => $element->{TemplateSectionElement::ID},
-                TemplateSectionElement::ELEMENT_TYPE => $element::class,
-                TemplateSectionElement::HANDLE => $element->{TemplateSectionElement::HANDLE},
-                TemplateSectionElement::NAME => $element->{TemplateSectionElement::NAME},
-                TemplateSectionElement::POSITION => $position,
-                TemplateSectionElement::TEMPLATE_SECTION_ID => $section->{TemplateSection::ID},
-            ]);
-        }
-
-        return $section;
-    }
-
-    /**
-     * @return Field
-     */
-    private function createTitleField(): Field
-    {
-        return Field::firstOrCreate([
-            Field::NAME => 'Title',
-            Field::HANDLE => 'title',
-            Field::TYPE => TextInput::class,
-        ], [
-            Field::SETTINGS => app(TextInput::class),
+        $templateSection->fields()->attach($stringField->{Field::ID}, [
+            TemplateSectionElement::HANDLE => 'title',
+            TemplateSectionElement::NAME => 'Title',
+            TemplateSectionElement::POSITION => 0,
         ]);
+
+        return $templateSection;
     }
 
     #endregion

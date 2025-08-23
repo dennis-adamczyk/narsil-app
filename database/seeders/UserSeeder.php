@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Narsil\Models\Policies\Role;
 use Narsil\Models\User;
 
 #endregion
@@ -19,27 +20,41 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->createSuperAdminUser();
+        $role = $this->createSuperAdminRole();
+        $user = $this->createSuperAdminUser();
+
+        $user->roles()->sync($role->{Role::ID});
     }
 
     #endregion
 
-    #region PROTECTED METHODS
+    #region PRIVATE METHODS
+
+    /**
+     * @return Role
+     */
+    private function createSuperAdminRole(): Role
+    {
+        $role = Role::firstOrCreate([
+            Role::NAME => 'super_admin',
+        ]);
+
+        return $role;
+    }
 
     /**
      * @return User
      */
-    protected function createSuperAdminUser(): User
+    private function createSuperAdminUser(): User
     {
-        $user = User::create([
+        $user = User::firstOrCreate([
             User::EMAIL => 'admin@narsil.io',
-            User::EMAIL_VERIFIED_AT => Carbon::now(),
             User::FIRST_NAME => 'Admin',
             User::LAST_NAME => 'Super',
+        ], [
+            User::EMAIL_VERIFIED_AT => Carbon::now(),
             User::PASSWORD => '123456789',
         ]);
-
-        $user->attachRoles('super_admin');
 
         return $user;
     }

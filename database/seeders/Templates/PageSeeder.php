@@ -4,21 +4,18 @@ namespace Database\Seeders\Templates;
 
 #region USE
 
-use Database\Seeders\Templates\Pages\BuilderSeeder;
-use Database\Seeders\Templates\Pages\MetaSeeder;
-use Database\Seeders\Templates\Pages\OpenGraphSeeder;
-use Database\Seeders\Templates\Pages\RobotsSeeder;
-use Illuminate\Database\Seeder;
-use Narsil\Contracts\Fields\TextInput;
+use Database\Seeders\Templates\Blocks\MetaSeeder;
+use Database\Seeders\Templates\Blocks\OpenGraphSeeder;
+use Database\Seeders\Templates\Blocks\RobotsSeeder;
+use Database\Seeders\Templates\Fields\BuilderSeeder;
 use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\Field;
 use Narsil\Models\Elements\Template;
 use Narsil\Models\Elements\TemplateSection;
-use Narsil\Models\Elements\TemplateSectionElement;
 
 #endregion
 
-final class PageSeeder extends Seeder
+final class PageSeeder extends ElementSeeder
 {
     #region PUBLIC METHODS
 
@@ -36,6 +33,12 @@ final class PageSeeder extends Seeder
         $this->createContentSection($template);
         $this->createSEOSection($template);
 
+        $template->refresh()->load([
+            Template::RELATION_SECTIONS . '.' . TemplateSection::RELATION_ELEMENTS,
+        ]);
+
+        $template->touch();
+
         return $template;
     }
 
@@ -50,29 +53,21 @@ final class PageSeeder extends Seeder
      */
     private function createMainSection(Template $template): TemplateSection
     {
-        $elements = [
-            $this->createTitleField(),
-        ];
+        $stringField = $this->getStringField();
 
-        $section = TemplateSection::create([
+        $templateSection = TemplateSection::firstOrCreate([
             TemplateSection::HANDLE => 'main',
             TemplateSection::NAME => 'Main',
             TemplateSection::TEMPLATE_ID => $template->{Template::ID},
         ]);
 
-        foreach ($elements as $position => $element)
-        {
-            TemplateSectionElement::create([
-                TemplateSectionElement::ELEMENT_ID => $element->{TemplateSectionElement::ID},
-                TemplateSectionElement::ELEMENT_TYPE => $element::class,
-                TemplateSectionElement::HANDLE => $element->{TemplateSectionElement::HANDLE},
-                TemplateSectionElement::NAME => $element->{TemplateSectionElement::NAME},
-                TemplateSectionElement::POSITION => $position,
-                TemplateSectionElement::TEMPLATE_SECTION_ID => $section->{TemplateSection::ID},
-            ]);
-        }
+        $templateSection->fields()->attach($stringField->{Field::ID}, [
+            TemplateSection::HANDLE => 'title',
+            TemplateSection::NAME => 'Title',
+            TemplateSection::POSITION => 0,
+        ]);
 
-        return $section;
+        return $templateSection;
     }
 
     /**
@@ -84,29 +79,19 @@ final class PageSeeder extends Seeder
     {
         $builderField = new BuilderSeeder()->run();
 
-        $elements = [
-            $builderField
-        ];
-
-        $section = TemplateSection::create([
+        $templateSection = TemplateSection::firstOrCreate([
             TemplateSection::HANDLE => 'content',
             TemplateSection::NAME => 'Content',
             TemplateSection::TEMPLATE_ID => $template->{Template::ID},
         ]);
 
-        foreach ($elements as $position => $element)
-        {
-            TemplateSectionElement::create([
-                TemplateSectionElement::ELEMENT_ID => $element->{TemplateSectionElement::ID},
-                TemplateSectionElement::ELEMENT_TYPE => $element::class,
-                TemplateSectionElement::HANDLE => $element->{TemplateSectionElement::HANDLE},
-                TemplateSectionElement::NAME => $element->{TemplateSectionElement::NAME},
-                TemplateSectionElement::POSITION => $position,
-                TemplateSectionElement::TEMPLATE_SECTION_ID => $section->{TemplateSection::ID},
-            ]);
-        }
+        $templateSection->fields()->attach($builderField->{Field::ID}, [
+            TemplateSection::HANDLE => 'builder',
+            TemplateSection::NAME => 'Builder',
+            TemplateSection::POSITION => 0,
+        ]);
 
-        return $section;
+        return $templateSection;
     }
 
     /**
@@ -120,45 +105,31 @@ final class PageSeeder extends Seeder
         $openGraphBlock = new OpenGraphSeeder()->run();
         $robotsBlock = new RobotsSeeder()->run();
 
-        $elements = [
-            $metaBlock,
-            $openGraphBlock,
-            $robotsBlock
-        ];
-
-        $section = TemplateSection::create([
+        $templateSection = TemplateSection::create([
             TemplateSection::HANDLE => 'seo',
             TemplateSection::NAME => 'SEO',
             TemplateSection::TEMPLATE_ID => $template->{Template::ID},
         ]);
 
-        foreach ($elements as $position => $element)
-        {
-            TemplateSectionElement::create([
-                TemplateSectionElement::ELEMENT_ID => $element->{Block::ID},
-                TemplateSectionElement::ELEMENT_TYPE => $element::class,
-                TemplateSectionElement::HANDLE => $element->{Field::HANDLE},
-                TemplateSectionElement::NAME => $element->{Field::NAME},
-                TemplateSectionElement::POSITION => $position,
-                TemplateSectionElement::TEMPLATE_SECTION_ID => $section->{TemplateSection::ID},
-            ]);
-        }
-
-        return $section;
-    }
-
-    /**
-     * @return Field
-     */
-    private function createTitleField(): Field
-    {
-        return Field::firstOrCreate([
-            Field::NAME => 'Title',
-            Field::HANDLE => 'title',
-            Field::TYPE => TextInput::class,
-        ], [
-            Field::SETTINGS => app(TextInput::class),
+        $templateSection->blocks()->sync([
+            $metaBlock->{Field::ID} => [
+                TemplateSection::HANDLE => $metaBlock->{Block::HANDLE},
+                TemplateSection::NAME => $metaBlock->{Block::NAME},
+                TemplateSection::POSITION => 0,
+            ],
+            $openGraphBlock->{Field::ID} => [
+                TemplateSection::HANDLE => $openGraphBlock->{Block::HANDLE},
+                TemplateSection::NAME => $openGraphBlock->{Block::NAME},
+                TemplateSection::POSITION => 1,
+            ],
+            $robotsBlock->{Field::ID} => [
+                TemplateSection::HANDLE => $robotsBlock->{Block::HANDLE},
+                TemplateSection::NAME => $robotsBlock->{Block::NAME},
+                TemplateSection::POSITION => 2,
+            ],
         ]);
+
+        return $templateSection;
     }
 
     #endregion
