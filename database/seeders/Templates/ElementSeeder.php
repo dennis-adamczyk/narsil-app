@@ -44,10 +44,12 @@ abstract class ElementSeeder extends Seeder
             Block::HANDLE => 'text',
         ]);
 
-        $block->fields()->attach($field->{Field::ID}, [
-            BlockElement::HANDLE => $field->{Field::HANDLE},
-            BlockElement::NAME => $field->{Field::NAME},
-            BlockElement::POSITION => 0,
+        $block->fields()->sync([
+            $field->{Field::ID} => [
+                BlockElement::HANDLE => $field->{Field::HANDLE},
+                BlockElement::NAME => $field->{Field::NAME},
+                BlockElement::POSITION => 0,
+            ],
         ]);
 
         return $block;
