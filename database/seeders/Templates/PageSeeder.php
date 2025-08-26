@@ -4,10 +4,10 @@ namespace Database\Seeders\Templates;
 
 #region USE
 
+use Database\Seeders\Templates\Blocks\AccordionSeeder;
 use Database\Seeders\Templates\Blocks\MetaSeeder;
 use Database\Seeders\Templates\Blocks\OpenGraphSeeder;
 use Database\Seeders\Templates\Blocks\RobotsSeeder;
-use Database\Seeders\Templates\Fields\BuilderSeeder;
 use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\Field;
 use Narsil\Models\Elements\Template;
@@ -29,8 +29,8 @@ final class PageSeeder extends ElementSeeder
             Template::NAME => 'Pages',
         ]);
 
+        $this->attachBlocks($template);
         $this->createMainSection($template);
-        $this->createContentSection($template);
         $this->createSEOSection($template);
 
         $template->refresh()->load([
@@ -45,6 +45,22 @@ final class PageSeeder extends ElementSeeder
     #endregion
 
     #region PRIVATE METHODS
+
+    /**
+     * @param Template $template
+     *
+     * @return void
+     */
+    private function attachBlocks(Template $template): void
+    {
+        $accordionBlock = new AccordionSeeder()->run();
+        $richTextBlock = $this->getRichTextBlock();
+
+        $template->blocks()->sync([
+            $accordionBlock->{Block::ID},
+            $richTextBlock->{Block::ID},
+        ]);
+    }
 
     /**
      * @param Template $template
@@ -64,30 +80,6 @@ final class PageSeeder extends ElementSeeder
         $templateSection->fields()->attach($stringField->{Field::ID}, [
             TemplateSection::HANDLE => 'title',
             TemplateSection::NAME => 'Title',
-            TemplateSection::POSITION => 0,
-        ]);
-
-        return $templateSection;
-    }
-
-    /**
-     * @param Template $template
-     *
-     * @return TemplateSection
-     */
-    private function createContentSection(Template $template): TemplateSection
-    {
-        $builderField = new BuilderSeeder()->run();
-
-        $templateSection = TemplateSection::firstOrCreate([
-            TemplateSection::HANDLE => 'content',
-            TemplateSection::NAME => 'Content',
-            TemplateSection::TEMPLATE_ID => $template->{Template::ID},
-        ]);
-
-        $templateSection->fields()->attach($builderField->{Field::ID}, [
-            TemplateSection::HANDLE => 'builder',
-            TemplateSection::NAME => 'Builder',
             TemplateSection::POSITION => 0,
         ]);
 
