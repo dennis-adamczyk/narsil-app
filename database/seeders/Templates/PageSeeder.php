@@ -29,7 +29,7 @@ final class PageSeeder extends ElementSeeder
             Template::NAME => 'Pages',
         ]);
 
-        $this->attachBlocks($template);
+        $this->attachSets($template);
         $this->createMainSection($template);
         $this->createSEOSection($template);
 
@@ -51,12 +51,12 @@ final class PageSeeder extends ElementSeeder
      *
      * @return void
      */
-    private function attachBlocks(Template $template): void
+    private function attachSets(Template $template): void
     {
         $accordionBlock = new AccordionSeeder()->run();
         $richTextBlock = $this->getRichTextBlock();
 
-        $template->blocks()->sync([
+        $template->sets()->sync([
             $accordionBlock->{Block::ID},
             $richTextBlock->{Block::ID},
         ]);
