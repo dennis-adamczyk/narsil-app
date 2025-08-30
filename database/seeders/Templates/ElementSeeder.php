@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Narsil\Contracts\Fields\CheckboxInput;
 use Narsil\Contracts\Fields\RichTextInput;
 use Narsil\Contracts\Fields\TextInput;
+use Narsil\Enums\Forms\RichTextEditorEnum;
 use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\BlockElement;
 use Narsil\Models\Elements\Field;
@@ -65,7 +66,8 @@ abstract class ElementSeeder extends Seeder
             Field::HANDLE => 'rich_text',
             Field::TYPE => RichTextInput::class,
         ], [
-            Field::SETTINGS => app(RichTextInput::class),
+            Field::SETTINGS => app(RichTextInput::class)
+                ->modules(RichTextEditorEnum::values()),
         ]);
     }
 
