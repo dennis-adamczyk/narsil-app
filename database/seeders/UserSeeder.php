@@ -11,7 +11,7 @@ use Narsil\Models\User;
 
 #endregion
 
-class UserSeeder extends Seeder
+final class UserSeeder extends Seeder
 {
     #region PUBLIC METHODS
 
