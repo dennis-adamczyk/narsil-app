@@ -2,12 +2,10 @@
 
 #region USE
 
+use App\Livewire\Page;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 #endregion
 
-Route::get('/', function ()
-{
-    return Inertia::render('index');
-});
+Route::get('/{slug?}', Page::class)
+    ->where('slug', '.*');
