@@ -1,13 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "private": true,
   "type": "module",
+  "private": true,
   "workspaces": [
     "vendor/narsil/cms"
   ],
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "devDependencies": {},
   "dependencies": {}

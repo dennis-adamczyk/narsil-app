@@ -4,5 +4,15 @@
   "semi": true,
   "singleQuote": false,
   "tabWidth": 2,
-  "trailingComma": "all"
+  "tailwindFunctions": ["clsx", "cn", "cva"],
+  "tailwindStylesheet": "./resources/css/app.css",
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": ["vendor/narsil/cms/**/*"],
+      "options": {
+        "tailwindStylesheet": "./vendor/narsil/cms/resources/css/app.css"
+      }
+    }
+  ]
 }
