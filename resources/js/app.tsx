@@ -1,6 +1,8 @@
 import { createInertiaApp } from "@inertiajs/react";
 import { createRoot } from "react-dom/client";
+
 import BackendLayout from "@narsil-cms/layouts/layout";
+
 import FrontendLayout from "./layouts/layout";
 
 createInertiaApp({

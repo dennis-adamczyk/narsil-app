@@ -10,7 +10,16 @@
     "dev": "vite",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "lint:fix": "eslint 'resources/js/**/*.{ts,tsx,js,jsx}' 'vendor/narsil/cms/**/*.{ts,tsx}' --ext .ts,.tsx --fix",
-    "lint": "eslint 'resources/js/**/*.{ts,tsx,js,jsx}' 'vendor/narsil/cms/**/*.{ts,tsx}' --ext .ts,.tsx"
+    "lint:fix": "eslint 'resources/js/**/*.{ts,tsx,js,jsx}' 'vendor/narsil/cms/resources/js/**/*.{ts,tsx}' --ext .ts,.tsx --fix",
+    "lint": "eslint 'resources/js/**/*.{ts,tsx,js,jsx}' 'vendor/narsil/cms/resources/js/**/*.{ts,tsx}' --ext .ts,.tsx"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint": "^9.35.0",
+    "typescript": "^5.9.2"
   }
 }

@@ -1,3 +1,4 @@
+import importPlugin from "eslint-plugin-import";
 import reactPlugin from "eslint-plugin-react";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
@@ -21,6 +22,7 @@ const eslintConfig = [
     },
     plugins: {
       "@typescript-eslint": tseslint,
+      import: importPlugin,
       react: reactPlugin,
     },
     rules: {
@@ -28,6 +30,7 @@ const eslintConfig = [
       eqeqeq: ["warn", "always", { null: "ignore" }],
       "no-eval": "error",
       "no-implied-eval": "error",
+      "no-multiple-empty-lines": ["warn", { max: 1, maxEOF: 0, maxBOF: 0 }],
       "no-new-func": "error",
       "no-script-url": "error",
       "no-self-compare": "error",
@@ -81,6 +84,31 @@ const eslintConfig = [
           varsIgnorePattern: "^_",
           destructuredArrayIgnorePattern: "^_",
           caughtErrorsIgnorePattern: "^(_|ignore)",
+        },
+      ],
+      "import/order": [
+        "warn",
+        {
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            ["parent", "sibling", "index"],
+            "type",
+          ],
+          "newlines-between": "always",
+          pathGroups: [
+            {
+              pattern: "@narsil-cms/**",
+              group: "internal",
+            },
+          ],
+          pathGroupsExcludedImportTypes: ["react", "react-dom"],
+          warnOnUnassignedImports: true,
         },
       ],
     },
