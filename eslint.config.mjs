@@ -4,22 +4,13 @@ import tsParser from "@typescript-eslint/parser";
 
 const eslintConfig = [
   {
-    ignores: [
-      "!vendor/narsil/cms/**",
-      "*.config.cjs",
-      "*.config.js",
-      "*.config.mjs",
-      "*.config.ts",
-      "build/**",
-      "coverage/**",
-      "dist/**",
-      "node_modules/**",
-      "out/**",
-      "vendor/**",
-    ],
+    ignores: ["vendor/**/*.d.ts"],
   },
   {
-    files: ["**/*.{ts,tsx}"],
+    files: [
+      "resources/js/**/*.{ts,tsx}",
+      "vendor/narsil/cms/resources/js/**/*.{ts,tsx}",
+    ],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -52,7 +43,7 @@ const eslintConfig = [
       "no-duplicate-imports": "error",
       "no-unused-expressions": "warn",
       "no-var": "error",
-      "object-shorthand": "warn",
+      "object-shorthand": "off",
       "prefer-const": "warn",
       "prefer-template": "warn",
 

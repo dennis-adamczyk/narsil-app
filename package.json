@@ -10,9 +10,7 @@
     "dev": "vite",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
-  },
-  "devDependencies": {},
-  "dependencies": {}
+    "lint:fix": "eslint 'resources/js/**/*.{ts,tsx,js,jsx}' 'vendor/narsil/cms/**/*.{ts,tsx}' --ext .ts,.tsx --fix",
+    "lint": "eslint 'resources/js/**/*.{ts,tsx,js,jsx}' 'vendor/narsil/cms/**/*.{ts,tsx}' --ext .ts,.tsx"
+  }
 }
