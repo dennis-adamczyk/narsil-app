@@ -10,7 +10,6 @@
     "dev": "vite",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "lint:fix": "eslint 'resources/js/**/*.{ts,tsx,js,jsx}' 'vendor/narsil/cms/resources/js/**/*.{ts,tsx}' --ext .ts,.tsx --fix",
     "lint": "eslint 'resources/js/**/*.{ts,tsx,js,jsx}' 'vendor/narsil/cms/resources/js/**/*.{ts,tsx}' --ext .ts,.tsx"
   },
   "devDependencies": {
@@ -20,6 +19,8 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint": "^9.35.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "typescript": "^5.9.2"
   }
 }

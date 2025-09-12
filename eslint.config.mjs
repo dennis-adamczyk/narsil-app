@@ -41,11 +41,11 @@ const eslintConfig = [
       "prefer-destructuring": ["warn", { object: true, array: false }],
 
       // JavaScript/ES6 rules
-      "no-console": "warn",
+      "no-console": ["error", { allow: ["warn", "error"] }],
       "no-debugger": "warn",
+      "no-var": "error",
       "no-duplicate-imports": "error",
       "no-unused-expressions": "warn",
-      "no-var": "error",
       "object-shorthand": "off",
       "prefer-const": "warn",
       "prefer-template": "warn",
