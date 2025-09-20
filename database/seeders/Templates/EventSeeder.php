@@ -8,6 +8,8 @@ use Narsil\Models\Elements\Field;
 use Narsil\Models\Elements\Template;
 use Narsil\Models\Elements\TemplateSection;
 use Narsil\Models\Elements\TemplateSectionElement;
+use Narsil\Services\MigrationService;
+use Narsil\Services\TemplateService;
 
 #endregion
 
@@ -27,11 +29,7 @@ final class EventSeeder extends ElementSeeder
 
         $this->createMainSection($template);
 
-        $template->refresh()->load([
-            Template::RELATION_SECTIONS . '.' . TemplateSection::RELATION_ELEMENTS,
-        ]);
-
-        $template->touch();
+        MigrationService::syncTable($template);
 
         return $template;
     }

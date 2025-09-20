@@ -12,6 +12,7 @@ use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\Field;
 use Narsil\Models\Elements\Template;
 use Narsil\Models\Elements\TemplateSection;
+use Narsil\Services\MigrationService;
 
 #endregion
 
@@ -33,11 +34,7 @@ final class PageSeeder extends ElementSeeder
         $this->createMainSection($template);
         $this->createSEOSection($template);
 
-        $template->refresh()->load([
-            Template::RELATION_SECTIONS . '.' . TemplateSection::RELATION_ELEMENTS,
-        ]);
-
-        $template->touch();
+        MigrationService::syncTable($template);
 
         return $template;
     }
