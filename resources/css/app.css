@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@source "../../vendor/narsil/cms";
+@import "../../vendor/narsil/cms/resources/css/app.css";
 
 @custom-variant dark (&:is(.dark *));
 

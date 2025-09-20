@@ -25,16 +25,23 @@ final class PageSeeder extends ElementSeeder
      */
     public function run(): Template
     {
-        $template = Template::create([
-            Template::HANDLE => 'pages',
-            Template::NAME => 'Pages',
-        ]);
+        $template = Template::query()
+            ->where(Template::HANDLE, 'pages')
+            ->first();
 
-        $this->attachSets($template);
-        $this->createMainSection($template);
-        $this->createSEOSection($template);
+        if (!$template)
+        {
+            $template = Template::create([
+                Template::HANDLE => 'pages',
+                Template::NAME => 'Pages',
+            ]);
 
-        MigrationService::syncTable($template);
+            $this->attachSets($template);
+            $this->createMainSection($template);
+            $this->createSEOSection($template);
+
+            MigrationService::syncTable($template);
+        }
 
         return $template;
     }

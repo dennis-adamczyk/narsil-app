@@ -22,14 +22,21 @@ final class EventSeeder extends ElementSeeder
      */
     public function run(): Template
     {
-        $template = Template::create([
-            Template::HANDLE => 'events',
-            Template::NAME => 'Events',
-        ]);
+        $template = Template::query()
+            ->where(Template::HANDLE, 'events')
+            ->first();
 
-        $this->createMainSection($template);
+        if (!$template)
+        {
+            $template = Template::create([
+                Template::HANDLE => 'events',
+                Template::NAME => 'Events',
+            ]);
 
-        MigrationService::syncTable($template);
+            $this->createMainSection($template);
+
+            MigrationService::syncTable($template);
+        }
 
         return $template;
     }

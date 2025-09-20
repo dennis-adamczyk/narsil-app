@@ -1,9 +1,7 @@
 import { createInertiaApp } from "@inertiajs/react";
 import { createRoot } from "react-dom/client";
 
-import BackendLayout from "@narsil-cms/layouts/layout";
-
-import FrontendLayout from "./layouts/layout";
+import Layout from "@narsil-cms/layouts/layout";
 
 createInertiaApp({
   resolve: (name) => {
@@ -11,32 +9,25 @@ createInertiaApp({
       ? name.split("::")
       : [null, name];
 
-    const pages = (() => {
-      switch (vendorPath) {
-        case "narsil/cms":
-          return import.meta.glob("@narsil-cms/pages/**/*.tsx", {
-            eager: true,
-          });
-        default:
-          return import.meta.glob("@/pages/**/*.tsx", { eager: true });
-      }
-    })();
+    const appPages = import.meta.glob("@/pages/**/*.tsx", {
+      eager: true,
+    });
+    const vendorPages = import.meta.glob("@narsil-cms/pages/**/*.tsx", {
+      eager: true,
+    });
 
-    const page: any =
-      pages[
-        vendorPath
-          ? `/vendor/${vendorPath}/resources/js/pages/${componentPath}.tsx`
-          : `/resources/js/pages/${componentPath}.tsx`
-      ];
+    const appKey = `/resources/js/pages/${componentPath}.tsx`;
+    const vendorKey = `/vendor/${vendorPath}/resources/js/pages/${componentPath}.tsx`;
+
+    const page: any = appPages[appKey] ?? vendorPages[vendorKey];
+
+    if (!page) {
+      throw new Error(`Page not found: ${name}`);
+    }
 
     page.default.layout =
       page.default?.layout ||
-      ((page: React.ReactNode) =>
-        vendorPath ? (
-          <BackendLayout children={page} />
-        ) : (
-          <FrontendLayout children={page} />
-        ));
+      ((page: React.ReactNode) => <Layout children={page} />);
 
     return page;
   },
