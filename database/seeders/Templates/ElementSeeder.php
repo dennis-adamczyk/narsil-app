@@ -67,7 +67,7 @@ abstract class ElementSeeder extends Seeder
             Field::TYPE => RichTextInput::class,
         ], [
             Field::SETTINGS => app(RichTextInput::class)
-                ->modules(RichTextEditorEnum::values()),
+                ->setModules(RichTextEditorEnum::values()),
         ]);
     }
 
