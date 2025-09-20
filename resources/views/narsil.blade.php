@@ -12,6 +12,7 @@
 			href="/favicon.svg"
 			rel="icon"
 		/>
+
 		@inertiaHead
 		@routes
 		@viteReactRefresh
