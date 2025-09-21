@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-constructive: var(--constructive);
+  --color-constructive-foreground: var(--constructive-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-foreground: var(--foreground);
+  --color-input: var(--input);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-ring: var(--ring);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+
+  --radius-xs: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --scale-50: oklch(98.5% 0.002 247.839);
+  --scale-100: oklch(96.7% 0.003 264.542);
+  --scale-200: oklch(92.8% 0.006 264.531);
+  --scale-300: oklch(87.2% 0.01 258.338);
+  --scale-400: oklch(70.7% 0.022 261.325);
+  --scale-500: oklch(55.1% 0.027 264.364);
+  --scale-600: oklch(44.6% 0.03 256.802);
+  --scale-700: oklch(37.3% 0.034 259.733);
+  --scale-800: oklch(27.8% 0.033 256.848);
+  --scale-900: oklch(21% 0.034 264.665);
+  --scale-950: oklch(13% 0.028 261.692);
+}
+
+:root {
+  --background: var(--scale-50);
+  --border: var(--scale-300);
+  --foreground: var(--scale-950);
+  --input: var(--scale-300);
+  --radius: 0.5rem;
+  --ring: var(--scale-400);
+
+  --accent: var(--scale-200);
+  --accent-foreground: var(--scale-950);
+
+  --card: var(--scale-50);
+  --card-foreground: var(--scale-950);
+
+  --constructive: oklch(62.7% 0.194 149.214);
+  --constructive-foreground: var(--scale-50);
+
+  --destructive: oklch(57.7% 0.245 27.325);
+  --destructive-foreground: var(--scale-50);
+
+  --muted: var(--scale-200);
+  --muted-foreground: var(--scale-500);
+
+  --popover: var(--scale-50);
+  --popover-foreground: var(--scale-950);
+
+  --primary: var(--scale-900);
+  --primary-foreground: var(--scale-50);
+
+  --secondary: var(--scale-300);
+  --secondary-foreground: var(--scale-950);
+}
+
+.dark {
+  --background: var(--scale-950);
+  --border: var(--scale-700);
+  --foreground: var(--scale-50);
+  --input: var(--scale-700);
+  --ring: var(--scale-600);
+
+  --accent: var(--scale-800);
+  --accent-foreground: var(--scale-50);
+
+  --card: var(--scale-950);
+  --card-foreground: var(--scale-50);
+
+  --muted: var(--scale-800);
+  --muted-foreground: var(--scale-500);
+
+  --popover: var(--scale-950);
+  --popover-foreground: var(--scale-50);
+
+  --primary: var(--scale-100);
+  --primary-foreground: var(--scale-950);
+
+  --secondary: var(--scale-700);
+  --secondary-foreground: var(--scale-50);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground text-sm;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:active,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:hover {
+    -webkit-text-fill-color: var(--foreground) !important;
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}

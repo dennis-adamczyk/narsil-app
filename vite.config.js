@@ -16,7 +16,11 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       laravel({
-        input: ["resources/css/app.css", "resources/js/app.tsx"],
+        input: [
+          "resources/css/backend.css",
+          "resources/css/frontend.css",
+          "resources/js/app.tsx",
+        ],
         refresh: true,
       }),
       react(),
