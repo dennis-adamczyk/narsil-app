@@ -56,6 +56,12 @@
   --card: var(--scale-950);
   --card-foreground: var(--scale-50);
 
+  --constructive: oklch(62.7% 0.194 149.214);
+  --constructive-foreground: var(--scale-50);
+
+  --destructive: oklch(57.7% 0.245 27.325);
+  --destructive-foreground: var(--scale-50);
+
   --muted: var(--scale-800);
   --muted-foreground: var(--scale-500);
 
