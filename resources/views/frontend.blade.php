@@ -12,36 +12,22 @@
 			href="/favicon.svg"
 			rel="icon"
 		/>
-		<title>{{ $title ?? 'Page Title' }}</title>
+		<title>{{ $title ?? 'Page title' }}</title>
+		<meta
+			content="{{ $description ?? 'Page description' }}"
+			name="description"
+		>
 		@vite('resources/css/frontend.css')
 	</head>
-	<header class="bg-gray-800 p-4 text-white">
-		<div class="container mx-auto flex items-center justify-between">
-			<h1 class="text-xl font-bold">My Website</h1>
-			<nav class="space-x-4">
-				<a
-					class="hover:underline"
-					href="/"
-				>Home</a>
-				<a
-					class="hover:underline"
-					href="/about"
-				>About</a>
-				<a
-					class="hover:underline"
-					href="/contact"
-				>Contact</a>
-			</nav>
-		</div>
-	</header>
 
-	<body>
-		{{ $slot }}
+	<body class="flex min-h-screen flex-col">
+		<x-header />
+		<main class="flex-grow">
+			{{ $slot }}
+		</main>
+		<x-footer />
 	</body>
-	<footer class="mt-auto bg-gray-800 p-4 text-white">
-		<div class="container mx-auto text-center">
-			&copy; {{ date('Y') }} My Website. All rights reserved.
-		</div>
-	</footer>
+
+	</main>
 
 </html>

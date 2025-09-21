@@ -1,4 +1,3 @@
-{{-- Main Content --}}
-<main class="container mx-auto flex-grow p-6">
-
-</main>
+<p class="container mx-auto flex-grow">
+	This is a sample page.
+</p>

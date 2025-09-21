@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -46,39 +44,6 @@
 }
 
 :root {
-  --background: var(--scale-50);
-  --border: var(--scale-300);
-  --foreground: var(--scale-950);
-  --input: var(--scale-300);
-  --radius: 0.5rem;
-  --ring: var(--scale-400);
-
-  --accent: var(--scale-200);
-  --accent-foreground: var(--scale-950);
-
-  --card: var(--scale-50);
-  --card-foreground: var(--scale-950);
-
-  --constructive: oklch(62.7% 0.194 149.214);
-  --constructive-foreground: var(--scale-50);
-
-  --destructive: oklch(57.7% 0.245 27.325);
-  --destructive-foreground: var(--scale-50);
-
-  --muted: var(--scale-200);
-  --muted-foreground: var(--scale-500);
-
-  --popover: var(--scale-50);
-  --popover-foreground: var(--scale-950);
-
-  --primary: var(--scale-900);
-  --primary-foreground: var(--scale-50);
-
-  --secondary: var(--scale-300);
-  --secondary-foreground: var(--scale-950);
-}
-
-.dark {
   --background: var(--scale-950);
   --border: var(--scale-700);
   --foreground: var(--scale-50);
