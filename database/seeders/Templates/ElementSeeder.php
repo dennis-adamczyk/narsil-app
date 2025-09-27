@@ -5,9 +5,9 @@ namespace Database\Seeders\Templates;
 #region USE
 
 use Illuminate\Database\Seeder;
-use Narsil\Contracts\Fields\CheckboxInput;
-use Narsil\Contracts\Fields\RichTextInput;
-use Narsil\Contracts\Fields\TextInput;
+use Narsil\Contracts\Fields\CheckboxField;
+use Narsil\Contracts\Fields\RichTextField;
+use Narsil\Contracts\Fields\TextField;
 use Narsil\Enums\Forms\RichTextEditorEnum;
 use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\BlockElement;
@@ -27,9 +27,9 @@ abstract class ElementSeeder extends Seeder
         return Field::firstOrCreate([
             Field::NAME => 'Checkbox',
             Field::HANDLE => 'checkbox',
-            Field::TYPE => CheckboxInput::class,
+            Field::TYPE => CheckboxField::class,
         ], [
-            Field::SETTINGS => app(CheckboxInput::class),
+            Field::SETTINGS => app(CheckboxField::class),
         ]);
     }
 
@@ -64,9 +64,9 @@ abstract class ElementSeeder extends Seeder
         return Field::firstOrCreate([
             Field::NAME => 'Rich text',
             Field::HANDLE => 'rich_text',
-            Field::TYPE => RichTextInput::class,
+            Field::TYPE => RichTextField::class,
         ], [
-            Field::SETTINGS => app(RichTextInput::class)
+            Field::SETTINGS => app(RichTextField::class)
                 ->setModules(RichTextEditorEnum::values()),
         ]);
     }
@@ -79,9 +79,9 @@ abstract class ElementSeeder extends Seeder
         return Field::firstOrCreate([
             Field::NAME => 'string',
             Field::HANDLE => 'string',
-            Field::TYPE => TextInput::class,
+            Field::TYPE => TextField::class,
         ], [
-            Field::SETTINGS => app(TextInput::class),
+            Field::SETTINGS => app(TextField::class),
         ]);
     }
 
