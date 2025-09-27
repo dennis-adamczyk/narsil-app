@@ -7,8 +7,6 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Narsil\Http\Middleware\Inertia\HandleInertiaRequests;
-use Narsil\Http\Middleware\LocaleMiddleware;
 use Symfony\Component\HttpFoundation\Response;
 
 #endregion
@@ -21,10 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void
     {
-        $middleware->web(append: [
-            LocaleMiddleware::class,
-            HandleInertiaRequests::class,
-        ]);
+        //
     })
     ->withExceptions(function (Exceptions $exceptions): void
     {
