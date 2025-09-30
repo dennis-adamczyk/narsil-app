@@ -11,9 +11,6 @@ export default defineConfig(({ mode }) => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
 
   return {
-    optimizeDeps: {
-      exclude: ["@narsil-cms"],
-    },
     plugins: [
       laravel({
         input: [
@@ -31,7 +28,7 @@ export default defineConfig(({ mode }) => {
         "@": path.join(__dirname, "/resources/js"),
         "@narsil-cms": path.join(__dirname, "/vendor/narsil/cms/resources/js"),
       },
-      dedupe: ["react", "react-dom"],
+      preserveSymlinks: true,
     },
     server: {
       allowedHosts: true,

@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
 @import "../../vendor/narsil/cms/resources/css/app.css";
 
 @source "../../vendor/narsil/cms/resources";
