@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 #region USE
 
+use Database\Seeders\HostSeeder;
 use Database\Seeders\TemplateSeeder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,6 +21,10 @@ class SeederController extends Controller
      */
     public function __invoke(Request $request): RedirectResponse
     {
+        Artisan::call('db:seed', [
+            '--class' => HostSeeder::class,
+        ]);
+
         Artisan::call('db:seed', [
             '--class' => TemplateSeeder::class,
         ]);
