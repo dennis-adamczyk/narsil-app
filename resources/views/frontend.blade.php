@@ -20,7 +20,7 @@
 		@vite('resources/css/frontend.css')
 	</head>
 
-	<body class="flex min-h-screen flex-col">
+	<body class="flex min-h-screen flex-col antialiased">
 		<x-header />
 		<main class="flex-grow">
 			{{ $slot }}
