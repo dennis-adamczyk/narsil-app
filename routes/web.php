@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Route;
 
 #endregion
 
+Route::domain('{subdomain}')
+    ->get('/{slug?}', Page::class)
+    ->where('slug', '.*');
+
 Route::get('/{slug?}', Page::class)
     ->where('slug', '.*');
 
