@@ -20,9 +20,9 @@
 		@vite('resources/css/frontend.css')
 	</head>
 
-	<body class="flex min-h-screen flex-col antialiased">
+	<body class="antialiased">
 		<x-header />
-		<main class="flex-grow">
+		<main class="container mx-auto flex items-center justify-between p-4">
 			{{ $slot }}
 		</main>
 		<x-footer />

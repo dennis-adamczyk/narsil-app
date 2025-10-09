@@ -1,3 +1,3 @@
-<p class="container mx-auto flex-grow">
+<p>
 	This is a sample page.
 </p>
