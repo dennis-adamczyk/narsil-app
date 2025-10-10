@@ -62,11 +62,11 @@ abstract class ElementSeeder extends Seeder
     protected function getRichTextField(): Field
     {
         return Field::firstOrCreate([
-            Field::NAME => 'Rich text',
             Field::HANDLE => 'rich_text',
             Field::TRANSLATABLE => true,
             Field::TYPE => RichTextField::class,
         ], [
+            Field::NAME => 'Rich text',
             Field::SETTINGS => app(RichTextField::class)
                 ->setModules(RichTextEditorEnum::values()),
         ]);
@@ -78,11 +78,11 @@ abstract class ElementSeeder extends Seeder
     protected function getStringField(): Field
     {
         return Field::firstOrCreate([
-            Field::NAME => 'string',
             Field::HANDLE => 'string',
             Field::TRANSLATABLE => true,
             Field::TYPE => TextField::class,
         ], [
+            Field::NAME => 'String',
             Field::SETTINGS => app(TextField::class),
         ]);
     }
