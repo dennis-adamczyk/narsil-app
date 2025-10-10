@@ -41,6 +41,8 @@ final class TemplateSeeder extends Seeder
      */
     private function createEvents(Template $template): array
     {
+        Entity::setTemplate($template);
+
         $events = [];
 
         foreach (range(1, 10) as $index)
@@ -49,8 +51,6 @@ final class TemplateSeeder extends Seeder
                 Entity::ID => $index,
                 'title' => fake()->slug(),
             ]);
-
-            $event->setTable($template->{Template::HANDLE});
 
             $event->save();
 
@@ -67,15 +67,16 @@ final class TemplateSeeder extends Seeder
      */
     private function createPage(Template $template): Entity
     {
-        $entity = new Entity([
+        Entity::setTemplate($template);
+
+        $page = new Entity([
             Entity::ID => 1,
+            'title' => fake()->slug(),
         ]);
 
-        $entity->setTable($template->{Template::HANDLE});
+        $page->save();
 
-        $entity->save();
-
-        return $entity;
+        return $page;
     }
 
     #endregion

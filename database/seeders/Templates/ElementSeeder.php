@@ -64,6 +64,7 @@ abstract class ElementSeeder extends Seeder
         return Field::firstOrCreate([
             Field::NAME => 'Rich text',
             Field::HANDLE => 'rich_text',
+            Field::TRANSLATABLE => true,
             Field::TYPE => RichTextField::class,
         ], [
             Field::SETTINGS => app(RichTextField::class)
@@ -79,6 +80,7 @@ abstract class ElementSeeder extends Seeder
         return Field::firstOrCreate([
             Field::NAME => 'string',
             Field::HANDLE => 'string',
+            Field::TRANSLATABLE => true,
             Field::TYPE => TextField::class,
         ], [
             Field::SETTINGS => app(TextField::class),
