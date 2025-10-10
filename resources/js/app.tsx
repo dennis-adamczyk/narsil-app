@@ -5,9 +5,7 @@ import Layout from "@narsil-cms/layouts/layout";
 
 createInertiaApp({
   resolve: (name) => {
-    const [vendorPath, componentPath] = name.includes("::")
-      ? name.split("::")
-      : [null, name];
+    const [vendorPath, componentPath] = name.includes("::") ? name.split("::") : [null, name];
 
     const appPages = import.meta.glob("@/pages/**/*.tsx", {
       eager: true,
@@ -26,8 +24,7 @@ createInertiaApp({
     }
 
     page.default.layout =
-      page.default?.layout ||
-      ((page: React.ReactNode) => <Layout children={page} />);
+      page.default?.layout || ((page: React.ReactNode) => <Layout children={page} />);
 
     return page;
   },

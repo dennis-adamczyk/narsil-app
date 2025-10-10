@@ -1,17 +1,13 @@
-import importPlugin from "eslint-plugin-import";
-import reactPlugin from "eslint-plugin-react";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+import reactPlugin from "eslint-plugin-react";
 
 const eslintConfig = [
   {
     ignores: ["vendor/**/*.d.ts"],
   },
   {
-    files: [
-      "resources/js/**/*.{ts,tsx}",
-      "vendor/narsil/cms/resources/js/**/*.{ts,tsx}",
-    ],
+    files: ["resources/js/**/*.{ts,tsx}", "vendor/narsil/cms/resources/js/**/*.{ts,tsx}"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -22,7 +18,6 @@ const eslintConfig = [
     },
     plugins: {
       "@typescript-eslint": tseslint,
-      import: importPlugin,
       react: reactPlugin,
     },
     rules: {
@@ -84,31 +79,6 @@ const eslintConfig = [
           varsIgnorePattern: "^_",
           destructuredArrayIgnorePattern: "^_",
           caughtErrorsIgnorePattern: "^(_|ignore)",
-        },
-      ],
-      "import/order": [
-        "warn",
-        {
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            ["parent", "sibling", "index"],
-            "type",
-          ],
-          "newlines-between": "always",
-          pathGroups: [
-            {
-              pattern: "@narsil-cms/**",
-              group: "internal",
-            },
-          ],
-          pathGroupsExcludedImportTypes: ["react", "react-dom"],
-          warnOnUnassignedImports: true,
         },
       ],
     },
