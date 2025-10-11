@@ -31,8 +31,9 @@ final class PageSeeder extends ElementSeeder
 
         if (!$template)
         {
-            $template = Template::create([
+            $template = Template::firstOrCreate([
                 Template::HANDLE => 'pages',
+            ], [
                 Template::NAME => 'Pages',
             ]);
 
@@ -77,13 +78,14 @@ final class PageSeeder extends ElementSeeder
 
         $templateSection = TemplateSection::firstOrCreate([
             TemplateSection::HANDLE => 'main',
-            TemplateSection::NAME => 'Main',
             TemplateSection::TEMPLATE_ID => $template->{Template::ID},
+        ], [
+            TemplateSection::NAME => 'Main',
         ]);
 
         $templateSection->fields()->attach($stringField->{Field::ID}, [
             TemplateSection::HANDLE => 'title',
-            TemplateSection::NAME => 'Title',
+            TemplateSection::NAME => json_encode(['en' => 'Title']),
             TemplateSection::POSITION => 0,
         ]);
 
@@ -101,26 +103,27 @@ final class PageSeeder extends ElementSeeder
         $openGraphBlock = new OpenGraphSeeder()->run();
         $robotsBlock = new RobotsSeeder()->run();
 
-        $templateSection = TemplateSection::create([
+        $templateSection = TemplateSection::firstOrCreate([
             TemplateSection::HANDLE => 'seo',
-            TemplateSection::NAME => 'SEO',
             TemplateSection::TEMPLATE_ID => $template->{Template::ID},
+        ], [
+            TemplateSection::NAME => 'SEO',
         ]);
 
         $templateSection->blocks()->sync([
             $metaBlock->{Field::ID} => [
                 TemplateSection::HANDLE => $metaBlock->{Block::HANDLE},
-                TemplateSection::NAME => $metaBlock->{Block::NAME},
+                TemplateSection::NAME => json_encode(['en' => $metaBlock->{Block::NAME}]),
                 TemplateSection::POSITION => 0,
             ],
             $openGraphBlock->{Field::ID} => [
                 TemplateSection::HANDLE => $openGraphBlock->{Block::HANDLE},
-                TemplateSection::NAME => $openGraphBlock->{Block::NAME},
+                TemplateSection::NAME => json_encode(['en' => $openGraphBlock->{Block::NAME}]),
                 TemplateSection::POSITION => 1,
             ],
             $robotsBlock->{Field::ID} => [
                 TemplateSection::HANDLE => $robotsBlock->{Block::HANDLE},
-                TemplateSection::NAME => $robotsBlock->{Block::NAME},
+                TemplateSection::NAME => json_encode(['en' => $robotsBlock->{Block::NAME}]),
                 TemplateSection::POSITION => 2,
             ],
         ]);

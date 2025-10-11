@@ -38,7 +38,7 @@ abstract class ElementSeeder extends Seeder
      */
     protected function getRichTextBlock(): Block
     {
-        $field = $this->getRichTextField();
+        $richTextField = $this->getRichTextField();
 
         $block = Block::firstOrCreate([
             Block::HANDLE => 'text',
@@ -47,9 +47,9 @@ abstract class ElementSeeder extends Seeder
         ]);
 
         $block->fields()->sync([
-            $field->{Field::ID} => [
-                BlockElement::HANDLE => $field->{Field::HANDLE},
-                BlockElement::NAME => $field->{Field::NAME},
+            $richTextField->{Field::ID} => [
+                BlockElement::HANDLE => $richTextField->{Field::HANDLE},
+                BlockElement::NAME => json_encode(['en' => $richTextField->{Field::NAME}]),
                 BlockElement::POSITION => 0,
             ],
         ]);

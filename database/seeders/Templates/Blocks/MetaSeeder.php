@@ -41,13 +41,13 @@ final class MetaSeeder extends ElementSeeder
 
         $block->fields()->attach($stringField->{Field::ID}, [
             BlockElement::HANDLE => 'meta_title',
-            BlockElement::NAME => 'Meta Title',
+            BlockElement::NAME => json_encode(['en' => 'Meta Title']),
             BlockElement::POSITION => 0,
         ]);
 
         $block->fields()->attach($stringField->{Field::ID}, [
             BlockElement::HANDLE => 'meta_description',
-            BlockElement::NAME => 'Meta Description',
+            BlockElement::NAME => json_encode(['en' => 'Meta Description']),
             BlockElement::POSITION => 1,
         ]);
 

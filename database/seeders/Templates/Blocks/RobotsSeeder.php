@@ -35,19 +35,20 @@ final class RobotsSeeder extends ElementSeeder
         $checkboxField = $this->getCheckboxField();
 
         $block = Block::firstOrCreate([
-            Block::NAME => 'Robots',
             Block::HANDLE => 'robots',
+        ], [
+            Block::NAME => 'Robots',
         ]);
 
         $block->fields()->attach($checkboxField->{Field::ID}, [
             BlockElement::HANDLE => 'nofollow',
-            BlockElement::NAME => 'No Follow',
+            BlockElement::NAME => json_encode(['en' => 'No Follow']),
             BlockElement::POSITION => 0,
         ]);
 
         $block->fields()->attach($checkboxField->{Field::ID}, [
             BlockElement::HANDLE => 'noindex',
-            BlockElement::NAME => 'No Index',
+            BlockElement::NAME => json_encode(['en' => 'No Index']),
             BlockElement::POSITION => 1,
         ]);
 

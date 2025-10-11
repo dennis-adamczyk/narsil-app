@@ -35,31 +35,32 @@ final class OpenGraphSeeder extends ElementSeeder
         $stringField = $this->getStringField();
 
         $block = Block::firstOrCreate([
-            Block::NAME => 'Open Graph',
             Block::HANDLE => 'open_graph',
+        ], [
+            Block::NAME => 'Open Graph',
         ]);
 
         $block->fields()->attach($stringField->{Field::ID}, [
             BlockElement::HANDLE => 'open_graph_type',
-            BlockElement::NAME => 'Open Graph Type',
+            BlockElement::NAME => json_encode(['en' => 'Open Graph Type']),
             BlockElement::POSITION => 0,
         ]);
 
         $block->fields()->attach($stringField->{Field::ID}, [
             BlockElement::HANDLE => 'open_graph_title',
-            BlockElement::NAME => 'Open Graph Title',
+            BlockElement::NAME => json_encode(['en' => 'Open Graph Title']),
             BlockElement::POSITION => 1,
         ]);
 
         $block->fields()->attach($stringField->{Field::ID}, [
             BlockElement::HANDLE => 'open_graph_description',
-            BlockElement::NAME => 'Open Graph Description',
+            BlockElement::NAME => json_encode(['en' => 'Open Graph Description']),
             BlockElement::POSITION => 2,
         ]);
 
         $block->fields()->attach($stringField->{Field::ID}, [
             BlockElement::HANDLE => 'open_graph_image',
-            BlockElement::NAME => 'Open Graph Image',
+            BlockElement::NAME => json_encode(['en' => 'Open Graph Image']),
             BlockElement::POSITION => 3,
         ]);
 
