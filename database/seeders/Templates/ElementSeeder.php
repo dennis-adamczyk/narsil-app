@@ -25,10 +25,10 @@ abstract class ElementSeeder extends Seeder
     protected function getCheckboxField(): Field
     {
         return Field::firstOrCreate([
-            Field::NAME => 'Checkbox',
             Field::HANDLE => 'checkbox',
             Field::TYPE => CheckboxField::class,
         ], [
+            Field::NAME => 'Checkbox',
             Field::SETTINGS => app(CheckboxField::class),
         ]);
     }
@@ -41,8 +41,9 @@ abstract class ElementSeeder extends Seeder
         $field = $this->getRichTextField();
 
         $block = Block::firstOrCreate([
-            Block::NAME => 'Text',
             Block::HANDLE => 'text',
+        ], [
+            Block::NAME => 'Text',
         ]);
 
         $block->fields()->sync([
