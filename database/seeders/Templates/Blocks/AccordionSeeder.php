@@ -56,14 +56,15 @@ final class AccordionSeeder extends ElementSeeder
         $stringField = $this->getStringField();
 
         $block = Block::firstOrCreate([
-            Block::NAME => 'Accordion Item',
             Block::HANDLE => 'accordion_item',
+        ], [
+            Block::NAME => 'Accordion Item',
         ]);
 
         $block->fields()->sync([
             $stringField->{Field::ID} => [
                 BlockElement::HANDLE => 'title',
-                BlockElement::NAME => 'Title',
+                BlockElement::NAME => json_encode(['en' => 'Title']),
                 BlockElement::POSITION => 0,
             ],
         ]);

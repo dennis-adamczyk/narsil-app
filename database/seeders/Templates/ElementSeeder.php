@@ -25,10 +25,10 @@ abstract class ElementSeeder extends Seeder
     protected function getCheckboxField(): Field
     {
         return Field::firstOrCreate([
-            Field::NAME => 'Checkbox',
             Field::HANDLE => 'checkbox',
             Field::TYPE => CheckboxField::class,
         ], [
+            Field::NAME => 'Checkbox',
             Field::SETTINGS => app(CheckboxField::class),
         ]);
     }
@@ -38,17 +38,18 @@ abstract class ElementSeeder extends Seeder
      */
     protected function getRichTextBlock(): Block
     {
-        $field = $this->getRichTextField();
+        $richTextField = $this->getRichTextField();
 
         $block = Block::firstOrCreate([
-            Block::NAME => 'Text',
             Block::HANDLE => 'text',
+        ], [
+            Block::NAME => 'Text',
         ]);
 
         $block->fields()->sync([
-            $field->{Field::ID} => [
-                BlockElement::HANDLE => $field->{Field::HANDLE},
-                BlockElement::NAME => $field->{Field::NAME},
+            $richTextField->{Field::ID} => [
+                BlockElement::HANDLE => $richTextField->{Field::HANDLE},
+                BlockElement::NAME => json_encode(['en' => $richTextField->{Field::NAME}]),
                 BlockElement::POSITION => 0,
             ],
         ]);
@@ -62,10 +63,11 @@ abstract class ElementSeeder extends Seeder
     protected function getRichTextField(): Field
     {
         return Field::firstOrCreate([
-            Field::NAME => 'Rich text',
             Field::HANDLE => 'rich_text',
+            Field::TRANSLATABLE => true,
             Field::TYPE => RichTextField::class,
         ], [
+            Field::NAME => 'Rich text',
             Field::SETTINGS => app(RichTextField::class)
                 ->setModules(RichTextEditorEnum::values()),
         ]);
@@ -77,10 +79,11 @@ abstract class ElementSeeder extends Seeder
     protected function getStringField(): Field
     {
         return Field::firstOrCreate([
-            Field::NAME => 'string',
             Field::HANDLE => 'string',
+            Field::TRANSLATABLE => true,
             Field::TYPE => TextField::class,
         ], [
+            Field::NAME => 'String',
             Field::SETTINGS => app(TextField::class),
         ]);
     }

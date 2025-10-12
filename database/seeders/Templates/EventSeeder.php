@@ -9,7 +9,6 @@ use Narsil\Models\Elements\Template;
 use Narsil\Models\Elements\TemplateSection;
 use Narsil\Models\Elements\TemplateSectionElement;
 use Narsil\Services\MigrationService;
-use Narsil\Services\TemplateService;
 
 #endregion
 
@@ -28,8 +27,9 @@ final class EventSeeder extends ElementSeeder
 
         if (!$template)
         {
-            $template = Template::create([
+            $template = Template::firstOrCreate([
                 Template::HANDLE => 'events',
+            ], [
                 Template::NAME => 'Events',
             ]);
 
@@ -56,13 +56,14 @@ final class EventSeeder extends ElementSeeder
 
         $templateSection = TemplateSection::firstOrCreate([
             TemplateSection::HANDLE => 'main',
-            TemplateSection::NAME => 'Main',
             TemplateSection::TEMPLATE_ID => $template->{Template::ID},
+        ], [
+            TemplateSection::NAME => 'Main',
         ]);
 
         $templateSection->fields()->attach($stringField->{Field::ID}, [
             TemplateSectionElement::HANDLE => 'title',
-            TemplateSectionElement::NAME => 'Title',
+            TemplateSectionElement::NAME => json_encode(['en' => 'Title']),
             TemplateSectionElement::POSITION => 0,
         ]);
 
