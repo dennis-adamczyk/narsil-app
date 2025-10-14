@@ -1,7 +1,6 @@
 import { createInertiaApp } from "@inertiajs/react";
-import { createRoot } from "react-dom/client";
-
 import Layout from "@narsil-cms/layouts/layout";
+import { createRoot } from "react-dom/client";
 
 createInertiaApp({
   resolve: (name) => {

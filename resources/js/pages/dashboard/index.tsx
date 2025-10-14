@@ -1,12 +1,7 @@
 import { Link } from "@inertiajs/react";
-import { route } from "ziggy-js";
-
 import { Heading } from "@narsil-cms/blocks";
-import {
-  SectionContent,
-  SectionHeader,
-  SectionRoot,
-} from "@narsil-cms/components/section";
+import { SectionContent, SectionHeader, SectionRoot } from "@narsil-cms/components/section";
+import { route } from "ziggy-js";
 
 function Dashboard() {
   return (
@@ -18,8 +13,8 @@ function Dashboard() {
       </SectionHeader>
       <SectionContent className="flex flex-col gap-4">
         <p>
-          This page is an example of how you can override a default CMS view
-          with your own implementation.
+          This page is an example of how you can override a default CMS view with your own
+          implementation.
         </p>
         <p>
           Need sample data? You can{" "}
