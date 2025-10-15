@@ -63,3 +63,23 @@ Start the local environment:
 ```bash
 ddev start
 ```
+
+### Initialization
+
+Copy the example environment file to .env:
+
+```bash
+cp .env.example .env
+```
+
+Generate the application key:
+
+```bash
+ddev artisan key:generate
+```
+
+Run the seeders:
+
+```bash
+ddev artisan db:seed
+```
