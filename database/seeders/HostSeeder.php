@@ -26,6 +26,7 @@ final class HostSeeder extends Seeder
         {
             $host = Host::firstOrCreate([
                 Host::HANDLE => $item[Host::HANDLE],
+            ], [
                 Host::NAME => $item[Host::NAME],
             ]);
 

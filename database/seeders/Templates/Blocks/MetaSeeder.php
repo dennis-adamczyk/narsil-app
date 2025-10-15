@@ -35,8 +35,9 @@ final class MetaSeeder extends ElementSeeder
         $stringField = $this->getStringField();
 
         $block = Block::firstOrCreate([
-            Block::NAME => 'Meta',
             Block::HANDLE => 'meta',
+        ], [
+            Block::NAME => 'Meta',
         ]);
 
         $block->fields()->attach($stringField->{Field::ID}, [

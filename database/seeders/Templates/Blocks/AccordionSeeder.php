@@ -35,12 +35,14 @@ final class AccordionSeeder extends ElementSeeder
     {
         $accordionItemSet = $this->createAccordionItemBlock();
 
-        $block = Block::create([
-            Block::NAME => 'Accordion',
+        $block = Block::firstOrCreate([
+
             Block::HANDLE => 'accordion',
+        ], [
+            Block::NAME => 'Accordion',
         ]);
 
-        BlockSet::create([
+        BlockSet::firstOrCreate([
             BlockSet::BLOCK_ID => $block->{Block::ID},
             BlockSet::SET_ID => $accordionItemSet->{Block::ID},
         ]);
@@ -71,7 +73,7 @@ final class AccordionSeeder extends ElementSeeder
 
         $richTextBlock = $this->getRichTextBlock();
 
-        BlockSet::create([
+        BlockSet::firstOrCreate([
             BlockSet::BLOCK_ID => $block->{Block::ID},
             BlockSet::SET_ID => $richTextBlock->{Block::ID},
         ]);

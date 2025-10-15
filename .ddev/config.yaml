@@ -9,8 +9,8 @@ additional_fqdns: [
   "*.narsil-app.ddev.site"
 ]
 database:
-  type: mariadb
-  version: "10.11"
+  type: postgres
+  version: "17"
 use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
