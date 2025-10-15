@@ -43,7 +43,7 @@ final class HostSeeder extends Seeder
                 {
                     HostLocaleLanguage::firstOrCreate([
                         HostLocaleLanguage::LANGUAGE => $language,
-                        HostLocaleLanguage::LOCALE_ID => $hostLocale->{HostLocale::ID},
+                        HostLocaleLanguage::LOCALE_UUID => $hostLocale->{HostLocale::UUID},
                         HostLocaleLanguage::POSITION => $key,
                     ]);
                 }
