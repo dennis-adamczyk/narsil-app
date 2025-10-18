@@ -1,17 +1,18 @@
-<header class="container mx-auto flex items-center justify-between p-4">
-	<h1 class="text-xl font-bold">My Website</h1>
-	<nav class="space-x-4">
+<header class="bg-gray-50 text-gray-950">
+	<div class="container mx-auto flex items-center justify-between p-4">
 		<a
-			class="hover:underline"
+			class="text-xl font-bold"
 			href="/"
 		>
-			Home
+			NARSIL
 		</a>
-		<a
-			class="hover:underline"
-			href="/narsil/dashboard"
-		>
-			Dashboard
-		</a>
-	</nav>
+		<nav class="flex gap-8 font-bold">
+			<a
+				class="text-gray-800 hover:text-gray-950"
+				href="/narsil/dashboard"
+			>
+				admin
+			</a>
+		</nav>
+	</div>
 </header>
