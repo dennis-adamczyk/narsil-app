@@ -1,5 +1,6 @@
 import { createInertiaApp } from "@inertiajs/react";
 import Layout from "@narsil-cms/layouts/layout";
+import { type ComponentProps } from "react";
 import { createRoot } from "react-dom/client";
 
 createInertiaApp({
@@ -16,6 +17,7 @@ createInertiaApp({
     const appKey = `/resources/js/pages/${componentPath}.tsx`;
     const vendorKey = `/vendor/${vendorPath}/resources/js/pages/${componentPath}.tsx`;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const page: any = appPages[appKey] ?? vendorPages[vendorKey];
 
     if (!page) {
@@ -23,7 +25,8 @@ createInertiaApp({
     }
 
     page.default.layout =
-      page.default?.layout || ((page: React.ReactNode) => <Layout children={page} />);
+      page.default?.layout ||
+      ((page: ComponentProps<typeof Layout>["children"]) => <Layout children={page} />);
 
     return page;
   },
