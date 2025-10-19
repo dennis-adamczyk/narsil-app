@@ -5,9 +5,6 @@ namespace Database\Seeders\Templates;
 #region USE
 
 use Database\Seeders\Templates\Blocks\AccordionSeeder;
-use Database\Seeders\Templates\Blocks\MetaSeeder;
-use Database\Seeders\Templates\Blocks\OpenGraphSeeder;
-use Database\Seeders\Templates\Blocks\RobotsSeeder;
 use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\Field;
 use Narsil\Models\Elements\Template;
@@ -39,7 +36,6 @@ final class PageSeeder extends ElementSeeder
 
             $this->attachSets($template);
             $this->createMainSection($template);
-            $this->createSEOSection($template);
 
             MigrationService::syncTable($template);
         }
@@ -91,45 +87,4 @@ final class PageSeeder extends ElementSeeder
 
         return $templateSection;
     }
-
-    /**
-     * @param Template $template
-     *
-     * @return TemplateSection
-     */
-    private function createSEOSection(Template $template): TemplateSection
-    {
-        $metaBlock = new MetaSeeder()->run();
-        $openGraphBlock = new OpenGraphSeeder()->run();
-        $robotsBlock = new RobotsSeeder()->run();
-
-        $templateSection = TemplateSection::firstOrCreate([
-            TemplateSection::HANDLE => 'seo',
-            TemplateSection::TEMPLATE_ID => $template->{Template::ID},
-        ], [
-            TemplateSection::NAME => 'SEO',
-        ]);
-
-        $templateSection->blocks()->sync([
-            $metaBlock->{Field::ID} => [
-                TemplateSection::HANDLE => $metaBlock->{Block::HANDLE},
-                TemplateSection::NAME => json_encode(['en' => $metaBlock->{Block::NAME}]),
-                TemplateSection::POSITION => 0,
-            ],
-            $openGraphBlock->{Field::ID} => [
-                TemplateSection::HANDLE => $openGraphBlock->{Block::HANDLE},
-                TemplateSection::NAME => json_encode(['en' => $openGraphBlock->{Block::NAME}]),
-                TemplateSection::POSITION => 1,
-            ],
-            $robotsBlock->{Field::ID} => [
-                TemplateSection::HANDLE => $robotsBlock->{Block::HANDLE},
-                TemplateSection::NAME => json_encode(['en' => $robotsBlock->{Block::NAME}]),
-                TemplateSection::POSITION => 2,
-            ],
-        ]);
-
-        return $templateSection;
-    }
-
-    #endregion
 }
