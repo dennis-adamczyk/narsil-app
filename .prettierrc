@@ -3,7 +3,7 @@
     {
       "files": ["vendor/narsil/cms/**/*"],
       "options": {
-        "tailwindStylesheet": "./vendor/narsil/cms/resources/css/app.css"
+        "tailwindStylesheet": "./resources/css/backend.css"
       }
     }
   ],
@@ -13,6 +13,6 @@
   "singleQuote": false,
   "tabWidth": 2,
   "tailwindFunctions": ["clsx", "cn", "cva"],
-  "tailwindStylesheet": "./resources/css/backend.css",
+  "tailwindStylesheet": "./resources/css/frontend.css",
   "trailingComma": "all"
 }

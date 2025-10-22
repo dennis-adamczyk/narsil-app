@@ -5,7 +5,7 @@ import { route } from "ziggy-js";
 
 function Dashboard() {
   return (
-    <SectionRoot className="h-full p-8">
+    <SectionRoot className="h-full p-4">
       <SectionHeader>
         <Heading level="h1" variant="h5">
           Welcome to Narsil CMS.
