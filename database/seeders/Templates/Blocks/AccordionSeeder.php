@@ -5,10 +5,11 @@ namespace Database\Seeders\Templates\Blocks;
 #region USE
 
 use Database\Seeders\Templates\ElementSeeder;
+use Narsil\Contracts\Fields\BuilderField;
 use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\BlockElement;
-use Narsil\Models\Elements\BlockSet;
 use Narsil\Models\Elements\Field;
+use Narsil\Models\Elements\FieldBlock;
 
 #endregion
 
@@ -33,7 +34,7 @@ final class AccordionSeeder extends ElementSeeder
      */
     private function createAccordionBlock(): Block
     {
-        $accordionItemSet = $this->createAccordionItemBlock();
+        $accordionItemContentField = $this->createAccordionContentField();
 
         $block = Block::firstOrCreate([
 
@@ -42,12 +43,37 @@ final class AccordionSeeder extends ElementSeeder
             Block::NAME => 'Accordion',
         ]);
 
-        BlockSet::firstOrCreate([
-            BlockSet::BLOCK_ID => $block->{Block::ID},
-            BlockSet::SET_ID => $accordionItemSet->{Block::ID},
+        $block->fields()->sync([
+            $accordionItemContentField->{Field::ID} => [
+                BlockElement::HANDLE => $accordionItemContentField->{Field::HANDLE},
+                BlockElement::NAME => json_encode(['en' => $accordionItemContentField->{Field::NAME}]),
+                BlockElement::POSITION => 0,
+            ],
         ]);
 
         return $block;
+    }
+
+    /**
+     * @return Field
+     */
+    private function createAccordionContentField(): Field
+    {
+        $accordionItemBlock = $this->createAccordionItemBlock();
+
+        $field = Field::firstOrCreate([
+            Field::HANDLE => 'accordion_content',
+            Field::TYPE => BuilderField::class,
+        ], [
+            Field::NAME => 'Accordion Content',
+        ]);
+
+        FieldBlock::firstOrCreate([
+            FieldBlock::BLOCK_ID => $accordionItemBlock->{Block::ID},
+            FieldBlock::FIELD_ID => $field->{Block::ID},
+        ]);
+
+        return $field;
     }
 
     /**
@@ -56,6 +82,7 @@ final class AccordionSeeder extends ElementSeeder
     private function createAccordionItemBlock(): Block
     {
         $stringField = $this->getStringField();
+        $accordionItemContentField = $this->createAccordionItemContentField();
 
         $block = Block::firstOrCreate([
             Block::HANDLE => 'accordion_item',
@@ -69,16 +96,36 @@ final class AccordionSeeder extends ElementSeeder
                 BlockElement::NAME => json_encode(['en' => 'Title']),
                 BlockElement::POSITION => 0,
             ],
-        ]);
-
-        $richTextBlock = $this->getRichTextBlock();
-
-        BlockSet::firstOrCreate([
-            BlockSet::BLOCK_ID => $block->{Block::ID},
-            BlockSet::SET_ID => $richTextBlock->{Block::ID},
+            $accordionItemContentField->{Field::ID} => [
+                BlockElement::HANDLE => $accordionItemContentField->{Field::HANDLE},
+                BlockElement::NAME => json_encode(['en' => $accordionItemContentField->{Field::NAME}]),
+                BlockElement::POSITION => 0,
+            ],
         ]);
 
         return $block;
+    }
+
+    /**
+     * @return Field
+     */
+    private function createAccordionItemContentField(): Field
+    {
+        $richTextBlock = $this->getRichTextBlock();
+
+        $field = Field::firstOrCreate([
+            Field::HANDLE => 'accordion_item_content',
+            Field::TYPE => BuilderField::class,
+        ], [
+            Field::NAME => 'Accordion Item Content',
+        ]);
+
+        FieldBlock::firstOrCreate([
+            FieldBlock::BLOCK_ID => $richTextBlock->{Block::ID},
+            FieldBlock::FIELD_ID => $field->{Block::ID},
+        ]);
+
+        return $field;
     }
 
     #endregion

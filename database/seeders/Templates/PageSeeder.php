@@ -5,8 +5,10 @@ namespace Database\Seeders\Templates;
 #region USE
 
 use Database\Seeders\Templates\Blocks\AccordionSeeder;
+use Narsil\Contracts\Fields\BuilderField;
 use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\Field;
+use Narsil\Models\Elements\FieldBlock;
 use Narsil\Models\Elements\Template;
 use Narsil\Models\Elements\TemplateSection;
 use Narsil\Services\MigrationService;
@@ -34,8 +36,8 @@ final class PageSeeder extends ElementSeeder
                 Template::NAME => 'Pages',
             ]);
 
-            $this->attachSets($template);
             $this->createMainSection($template);
+            $this->createContentSection($template);
 
             MigrationService::syncTable($template);
         }
@@ -48,19 +50,50 @@ final class PageSeeder extends ElementSeeder
     #region PRIVATE METHODS
 
     /**
-     * @param Template $template
-     *
-     * @return void
+     * @return Field
      */
-    private function attachSets(Template $template): void
+    private function createContentField(): Field
     {
         $accordionBlock = new AccordionSeeder()->run();
-        $richTextBlock = $this->getRichTextBlock();
 
-        $template->sets()->sync([
-            $accordionBlock->{Block::ID},
-            $richTextBlock->{Block::ID},
+        $field = Field::firstOrCreate([
+            Field::HANDLE => 'content',
+            Field::TYPE => BuilderField::class,
+        ], [
+            Field::NAME => 'Content',
         ]);
+
+        FieldBlock::firstOrCreate([
+            FieldBlock::BLOCK_ID => $accordionBlock->{Block::ID},
+            FieldBlock::FIELD_ID => $field->{Block::ID},
+        ]);
+
+        return $field;
+    }
+
+    /**
+     * @param Template $template
+     *
+     * @return TemplateSection
+     */
+    private function createContentSection(Template $template): TemplateSection
+    {
+        $contentField = $this->createContentField();
+
+        $templateSection = TemplateSection::firstOrCreate([
+            TemplateSection::HANDLE => 'content',
+            TemplateSection::TEMPLATE_ID => $template->{Template::ID},
+        ], [
+            TemplateSection::NAME => 'Content',
+        ]);
+
+        $templateSection->fields()->attach($contentField->{Block::ID}, [
+            TemplateSection::HANDLE => $contentField->{Block::HANDLE},
+            TemplateSection::NAME => json_encode(['en' => $contentField->{Block::NAME}]),
+            TemplateSection::POSITION => 0,
+        ]);
+
+        return $templateSection;
     }
 
     /**
