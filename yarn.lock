@@ -550,22 +550,22 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/retry/-/retry-0.4.3.tgz#c2b9d2e374ee62c586d3adbea87199b1d7a7a6ba"
   integrity sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==
 
-"@inertiajs/core@2.2.10":
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-2.2.10.tgz#b67c2fb21e5161b8af03c819a18d605d5a0f8796"
-  integrity sha512-R7286njELS5temUVVVMYDYmUxfB9XdAs9B8e8w8G15FFDksv5lIATpyqgdqTMF+R9ZFvRMt1ss4mnaxYlJmvNA==
+"@inertiajs/core@2.2.11":
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@inertiajs/core/-/core-2.2.11.tgz#fd8c4d61ce06669715f9e1751d62229e6970fb72"
+  integrity sha512-epXjgNZia/N5K4Y8SfAsy6bsagRjmLxQaIe2/SyMGZza0Vg4aDFnk2i3kZ7ewDcvXULXMiN42yxwiXt7rfVnXA==
   dependencies:
     "@types/lodash-es" "^4.17.12"
     axios "^1.12.2"
     lodash-es "^4.17.21"
     qs "^6.14.0"
 
-"@inertiajs/react@^2.2.10":
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/@inertiajs/react/-/react-2.2.10.tgz#fd5bb8182235bc59e0500e7a6206889457705c82"
-  integrity sha512-lStTGoLq8j4u2HEShnSm+V7Ol2AEgtnCpSUmOh3JAdA6vjKFCxNcnJ+pEUQ257kLNOtqhpHOqiSTzNy4/jVm+A==
+"@inertiajs/react@^2.2.11":
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@inertiajs/react/-/react-2.2.11.tgz#e6fb61dee6c5fd0e569a3ca8cbfd4dc53c0b40d1"
+  integrity sha512-n9UUYeEx77W6bV8mbZzCvYPPGAql7llpFJXsg8Ns7EL2dS5+0mj+JkBLJ3AQzdRKFc6e64/k7jjJgAhcT6y89g==
   dependencies:
-    "@inertiajs/core" "2.2.10"
+    "@inertiajs/core" "2.2.11"
     "@types/lodash-es" "^4.17.12"
     lodash-es "^4.17.21"
 
