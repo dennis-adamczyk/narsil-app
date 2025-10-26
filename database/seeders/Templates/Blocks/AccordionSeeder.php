@@ -62,10 +62,10 @@ final class AccordionSeeder extends ElementSeeder
         $accordionItemBlock = $this->createAccordionItemBlock();
 
         $field = Field::firstOrCreate([
-            Field::HANDLE => 'accordion_content',
+            Field::HANDLE => 'accordion_builder',
             Field::TYPE => BuilderField::class,
         ], [
-            Field::NAME => 'Accordion Content',
+            Field::NAME => 'Items',
         ]);
 
         FieldBlock::firstOrCreate([
@@ -114,10 +114,10 @@ final class AccordionSeeder extends ElementSeeder
         $richTextBlock = $this->getRichTextBlock();
 
         $field = Field::firstOrCreate([
-            Field::HANDLE => 'accordion_item_content',
+            Field::HANDLE => 'accordion_item_builder',
             Field::TYPE => BuilderField::class,
         ], [
-            Field::NAME => 'Accordion Item Content',
+            Field::NAME => 'Content',
         ]);
 
         FieldBlock::firstOrCreate([
