@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 #region USE
 
+use Illuminate\View\View;
 use Livewire\Component;
 
 #endregion
@@ -15,7 +16,7 @@ final class Page extends Component
     /**
      * {@inheritDoc}
      */
-    public function render()
+    public function render(): View
     {
         return view('livewire.page');
     }

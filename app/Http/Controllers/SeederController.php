@@ -29,7 +29,8 @@ class SeederController extends Controller
             '--class' => TemplateSeeder::class,
         ]);
 
-        return back()->with('success', trans('toasts.success.seeded'));
+        return back()
+            ->with('success', trans('toasts.success.seeded'));
     }
 
     #endregion
