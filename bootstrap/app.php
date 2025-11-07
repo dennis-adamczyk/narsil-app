@@ -34,12 +34,15 @@ return Application::configure(basePath: dirname(__DIR__))
                 503,
             ]);
 
-            if (!app()->environment(['local']) && $isError)
+            if ($isError)
             {
+                $title = trans("narsil::errors.titles.$code");
+                $description = trans("narsil::errors.descriptions.$code");
+
                 return Inertia::render('narsil/cms::error', [
                     'code' => $code,
-                    'description' => trans(`narsil-cms::errors.descriptions.$code`),
-                    'title' => trans(`narsil-cms::errors.titles.$code`),
+                    'description' => $description,
+                    'title' => $title,
                 ])
                     ->toResponse($request)
                     ->setStatusCode($response->getStatusCode());
