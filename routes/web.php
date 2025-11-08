@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Route;
 #endregion
 
 Route::domain('{subdomain}')
-    ->get('/{slug?}', Page::class)
-    ->where('slug', '.*');
+    ->get('/{path?}', Page::class)
+    ->where('path', '.*');
 
-Route::get('/{slug?}', Page::class)
-    ->where('slug', '.*');
+Route::get('/{path?}', Page::class)
+    ->where('path', '.*');
 
 Route::post('/narsil/seed', SeederController::class)
     ->name('narsil.seed');
