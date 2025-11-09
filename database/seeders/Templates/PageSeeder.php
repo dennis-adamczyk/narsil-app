@@ -4,18 +4,22 @@ namespace Database\Seeders\Templates;
 
 #region USE
 
-use Database\Seeders\Templates\Blocks\AccordionSeeder;
 use Narsil\Contracts\Fields\BuilderField;
+use Narsil\Database\Seeders\Blocks\AccordionBlockSeeder;
+use Narsil\Database\Seeders\Blocks\HeadlineBlockSeeder;
+use Narsil\Database\Seeders\Blocks\HeroHeaderBlockSeeder;
+use Narsil\Database\Seeders\Fields\TitleFieldSeeder;
 use Narsil\Models\Elements\Block;
 use Narsil\Models\Elements\Field;
 use Narsil\Models\Elements\FieldBlock;
 use Narsil\Models\Elements\Template;
 use Narsil\Models\Elements\TemplateSection;
+use Narsil\Models\Elements\TemplateSectionElement;
 use Narsil\Services\MigrationService;
 
 #endregion
 
-final class PageSeeder extends ElementSeeder
+final class PageSeeder
 {
     #region PUBLIC METHODS
 
@@ -54,7 +58,9 @@ final class PageSeeder extends ElementSeeder
      */
     private function createContentField(): Field
     {
-        $accordionBlock = new AccordionSeeder()->run();
+        $accordionBlock = new AccordionBlockSeeder()->run();
+        $headlineBlock = new HeadlineBlockSeeder()->run();
+        $heroHeaderBlock = new HeroHeaderBlockSeeder()->run();
 
         $field = Field::firstOrCreate([
             Field::HANDLE => 'content',
@@ -65,6 +71,16 @@ final class PageSeeder extends ElementSeeder
 
         FieldBlock::firstOrCreate([
             FieldBlock::BLOCK_ID => $accordionBlock->{Block::ID},
+            FieldBlock::FIELD_ID => $field->{Block::ID},
+        ]);
+
+        FieldBlock::firstOrCreate([
+            FieldBlock::BLOCK_ID => $headlineBlock->{Block::ID},
+            FieldBlock::FIELD_ID => $field->{Block::ID},
+        ]);
+
+        FieldBlock::firstOrCreate([
+            FieldBlock::BLOCK_ID => $heroHeaderBlock->{Block::ID},
             FieldBlock::FIELD_ID => $field->{Block::ID},
         ]);
 
@@ -103,7 +119,7 @@ final class PageSeeder extends ElementSeeder
      */
     private function createMainSection(Template $template): TemplateSection
     {
-        $stringField = $this->getStringField();
+        $titleField = new TitleFieldSeeder()->run();
 
         $templateSection = TemplateSection::firstOrCreate([
             TemplateSection::HANDLE => 'main',
@@ -112,10 +128,10 @@ final class PageSeeder extends ElementSeeder
             TemplateSection::NAME => 'Main',
         ]);
 
-        $templateSection->fields()->attach($stringField->{Field::ID}, [
-            TemplateSection::HANDLE => 'title',
-            TemplateSection::NAME => json_encode(['en' => 'Title']),
-            TemplateSection::POSITION => 0,
+        $templateSection->fields()->attach($titleField->{Field::ID}, [
+            TemplateSectionElement::HANDLE => $titleField->{Field::HANDLE},
+            TemplateSectionElement::NAME => json_encode(['en' => $titleField->{Field::NAME}]),
+            TemplateSectionElement::POSITION => 0,
         ]);
 
         return $templateSection;

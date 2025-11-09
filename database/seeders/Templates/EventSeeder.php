@@ -4,6 +4,7 @@ namespace Database\Seeders\Templates;
 
 #region USE
 
+use Narsil\Database\Seeders\Fields\TitleFieldSeeder;
 use Narsil\Models\Elements\Field;
 use Narsil\Models\Elements\Template;
 use Narsil\Models\Elements\TemplateSection;
@@ -12,7 +13,7 @@ use Narsil\Services\MigrationService;
 
 #endregion
 
-final class EventSeeder extends ElementSeeder
+final class EventSeeder
 {
     #region PUBLIC METHODS
 
@@ -52,7 +53,7 @@ final class EventSeeder extends ElementSeeder
      */
     private function createMainSection(Template $template): TemplateSection
     {
-        $stringField = $this->getStringField();
+        $titleField = new TitleFieldSeeder()->run();
 
         $templateSection = TemplateSection::firstOrCreate([
             TemplateSection::HANDLE => 'main',
@@ -61,9 +62,9 @@ final class EventSeeder extends ElementSeeder
             TemplateSection::NAME => 'Main',
         ]);
 
-        $templateSection->fields()->attach($stringField->{Field::ID}, [
-            TemplateSectionElement::HANDLE => 'title',
-            TemplateSectionElement::NAME => json_encode(['en' => 'Title']),
+        $templateSection->fields()->attach($titleField->{Field::ID}, [
+            TemplateSectionElement::HANDLE => $titleField->{Field::HANDLE},
+            TemplateSectionElement::NAME => json_encode(['en' => $titleField->{Field::NAME}]),
             TemplateSectionElement::POSITION => 0,
         ]);
 
