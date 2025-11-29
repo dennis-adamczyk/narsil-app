@@ -19,7 +19,7 @@ function Dashboard() {
         <p>
           Need sample data? You can{" "}
           <Link
-            className="cursor-pointer font-bold text-primary hover:underline"
+            className="text-primary cursor-pointer font-bold hover:underline"
             href={route("narsil.seed")}
             method="post"
           >
