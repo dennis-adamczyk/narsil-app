@@ -3,17 +3,23 @@
 #region USE
 
 use App\Http\Controllers\SeederController;
-use App\Livewire\Page;
+use App\Http\Middlewares\InertiaMiddleware;
 use Illuminate\Support\Facades\Route;
+use Narsil\Http\Controllers\PageController;
 
 #endregion
 
-Route::domain('{subdomain}')
-    ->get('/{path?}', Page::class)
-    ->where('path', '.*');
+Route::middleware([
+    InertiaMiddleware::class,
+])->group(function ()
+{
+    Route::get('/{path?}', PageController::class)
+        ->where('path', '.*');
 
-Route::get('/{path?}', Page::class)
-    ->where('path', '.*');
+    Route::domain('{subdomain}')
+        ->get('/{path?}', PageController::class)
+        ->where('path', '.*');
+});
 
 Route::post('/narsil/seed', SeederController::class)
     ->name('narsil.seed');

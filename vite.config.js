@@ -16,7 +16,8 @@ export default defineConfig(({ mode }) => {
         input: [
           "resources/css/backend.css",
           "resources/css/frontend.css",
-          "resources/js/app.tsx",
+          "resources/js/backend.tsx",
+          "resources/js/frontend.tsx",
         ],
         refresh: true,
       }),

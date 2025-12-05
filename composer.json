@@ -21,7 +21,6 @@
     }
   ],
   "require": {
-    "livewire/livewire": "^3.6",
     "narsil/cms": "dev-main"
   },
   "require-dev": {
