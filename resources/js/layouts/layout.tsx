@@ -21,7 +21,7 @@ function Layout({ children }: LayoutProps) {
           </nav>
         </div>
       </header>
-      <main className="grid grow grid-cols-12 bg-gray-950 text-gray-50">{children}</main>
+      <main className="grow bg-gray-950 text-gray-50">{children}</main>
       <footer className="bg-gray-50 text-gray-950">
         <div className="container mx-auto p-4 text-center">
           <span className="text-sm">&copy; 2026 Narsil. All rights reserved.</span>

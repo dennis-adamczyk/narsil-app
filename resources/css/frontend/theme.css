@@ -1,0 +1,47 @@
+@theme inline {
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-constructive: var(--constructive);
+  --color-constructive-foreground: var(--constructive-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-foreground: var(--foreground);
+  --color-input: var(--input);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-ring: var(--ring);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+}
+
+:root {
+  --accent-foreground: var(--color-zinc-950);
+  --accent: var(--color-zinc-200);
+  --background: var(--color-zinc-50);
+  --border: var(--color-zinc-300);
+  --card-foreground: var(--color-zinc-950);
+  --card: var(--color-zinc-50);
+  --constructive-foreground: var(--color-zinc-50);
+  --constructive: oklch(62.7% 0.194 149.214);
+  --destructive-foreground: var(--color-zinc-50);
+  --destructive: oklch(57.7% 0.245 27.325);
+  --foreground: var(--color-slate-50);
+  --input: var(--color-zinc-300);
+  --muted-foreground: var(--color-zinc-500);
+  --muted: var(--color-zinc-200);
+  --popover-foreground: var(--color-zinc-950);
+  --popover: var(--color-zinc-50);
+  --primary-foreground: var(--color-slate-50);
+  --primary: var(--color-pink-600);
+  --ring: var(--color-zinc-400);
+  --secondary-foreground: var(--color-slate-950);
+  --secondary: var(--color-zinc-300);
+}

@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@theme {
-  --font-sans: "Roboto", sans-serif;
-}
+@import "./frontend/font.css";
+@import "./frontend/theme.css";
