@@ -5,10 +5,6 @@
   --color-border: var(--border);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --color-constructive: var(--constructive);
-  --color-constructive-foreground: var(--constructive-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-foreground: var(--foreground);
   --color-input: var(--input);
   --color-muted-foreground: var(--muted-foreground);
@@ -26,13 +22,9 @@
   --accent-foreground: var(--color-zinc-950);
   --accent: var(--color-zinc-200);
   --background: var(--color-zinc-50);
-  --border: var(--color-zinc-300);
+  --border: var(--color-slate-300);
   --card-foreground: var(--color-zinc-950);
   --card: var(--color-zinc-50);
-  --constructive-foreground: var(--color-zinc-50);
-  --constructive: oklch(62.7% 0.194 149.214);
-  --destructive-foreground: var(--color-zinc-50);
-  --destructive: oklch(57.7% 0.245 27.325);
   --foreground: var(--color-slate-50);
   --input: var(--color-zinc-300);
   --muted-foreground: var(--color-zinc-500);

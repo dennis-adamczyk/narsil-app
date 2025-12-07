@@ -41,9 +41,7 @@ const buttonRootVariants = cva(
         sm: "h-8 gap-1.5 px-3 has-[>svg]:px-2",
         lg: "h-10 px-6 has-[>svg]:px-2",
         icon: "size-9",
-
         link: "",
-        ["icon-sm"]: "size-7",
       },
     },
     defaultVariants: {

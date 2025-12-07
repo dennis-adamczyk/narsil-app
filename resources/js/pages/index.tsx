@@ -9,12 +9,10 @@ function Page() {
       <p>Visit the admin panel to create your own content.</p>
       <Button
         className="transition-transform duration-200 will-change-transform hover:scale-105"
-        linkProps={{
-          href: "/narsil/dashboard",
-        }}
+        asChild={true}
         size="lg"
       >
-        Website erstellen
+        <a href="/narsil/dashboard">Website erstellen</a>
       </Button>
     </Container>
   );

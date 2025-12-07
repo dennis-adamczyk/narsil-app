@@ -1,9 +1,12 @@
 import dynamic from "@narsil-cms/lib/dynamic";
-import { ChevronDownIcon, RabbitIcon } from "lucide-react";
+import { CheckIcon, ChevronDownIcon, ChevronRightIcon, CircleIcon, RabbitIcon } from "lucide-react";
 
 export const icons = {
-  ["default"]: RabbitIcon,
+  ["check"]: CheckIcon,
   ["chevron-down"]: ChevronDownIcon,
+  ["chevron-right"]: ChevronRightIcon,
+  ["circle"]: CircleIcon,
+  ["default"]: RabbitIcon,
   ["instagram"]: dynamic(() => import("./icon-instagram")),
   ["linkedin"]: dynamic(() => import("./icon-linkedin")),
 } as const;
