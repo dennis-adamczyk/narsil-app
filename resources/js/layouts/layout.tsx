@@ -38,7 +38,7 @@ function Layout({ children }: LayoutProps) {
             <div className="flex flex-wrap justify-between gap-6 text-xl font-bold md:items-center md:gap-8 lg:gap-12">
               NARSIL
             </div>
-            <div className="flex flex-row gap-10 text-base">
+            <div className="flex flex-row gap-10">
               <div className="flex flex-col gap-0.5 lg:gap-2">
                 <p className="font-bold">{footer.company}</p>
                 <p className="flex flex-col gap-0.5">
