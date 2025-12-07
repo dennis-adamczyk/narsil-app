@@ -19,23 +19,21 @@ function Layout({ children }: LayoutProps) {
 
   return (
     <div className="flex min-h-svh flex-col">
-      <header className="bg-gray-50 text-gray-950">
-        <div className="container mx-auto flex items-center justify-between p-4">
-          <a className="text-xl font-bold" href="/">
-            NARSIL
+      <header className="bg-light sticky top-0 right-0 left-0 z-10 flex w-full items-center justify-between py-2 pr-2 pl-4 text-slate-950 md:px-4 md:py-4 lg:px-14 xl:px-20">
+        <a className="text-lg font-bold" href="/">
+          NARSIL
+        </a>
+        <nav className="flex gap-8 font-bold">
+          <a className="text-gray-800 hover:text-gray-950" href="/narsil/dashboard">
+            admin
           </a>
-          <nav className="flex gap-8 font-bold">
-            <a className="text-gray-800 hover:text-gray-950" href="/narsil/dashboard">
-              admin
-            </a>
-          </nav>
-        </div>
+        </nav>
       </header>
       <main className="grow bg-gray-950 text-gray-50">{children}</main>
-      <footer className="bg-light mx-auto flex w-full flex-col gap-6 p-4 text-slate-900 md:gap-8 md:px-4 md:pt-6 lg:gap-10 lg:px-14 lg:pt-6 xl:px-20 xl:pt-8">
+      <footer className="bg-light mx-auto flex w-full flex-col gap-6 p-4 text-slate-950 md:gap-8 md:px-4 md:pt-6 lg:gap-10 lg:px-14 lg:pt-6 xl:px-20 xl:pt-8">
         <div className="flex flex-col justify-between gap-6 sm:flex-row">
           <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
-            <div className="flex flex-wrap justify-between gap-6 text-xl font-bold md:items-center md:gap-8 lg:gap-12">
+            <div className="flex flex-wrap justify-between gap-6 text-lg font-bold md:items-center md:gap-8 lg:gap-12">
               NARSIL
             </div>
             <div className="flex flex-row gap-10">
