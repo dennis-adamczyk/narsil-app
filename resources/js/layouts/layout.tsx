@@ -35,7 +35,9 @@ function Layout({ children }: LayoutProps) {
       <footer className="bg-light mx-auto flex w-full flex-col gap-6 p-4 text-slate-900 md:gap-8 md:px-4 md:pt-6 lg:gap-10 lg:px-14 lg:pt-6 xl:px-20 xl:pt-8">
         <div className="flex flex-col justify-between gap-6 sm:flex-row">
           <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
-            <div className="flex flex-wrap justify-between gap-6 md:items-center md:gap-8 lg:gap-12"></div>
+            <div className="flex flex-wrap justify-between gap-6 text-xl font-bold md:items-center md:gap-8 lg:gap-12">
+              NARSIL
+            </div>
             <div className="flex flex-row gap-10 text-base">
               <div className="flex flex-col gap-0.5 lg:gap-2">
                 <p className="font-bold">{footer.company}</p>
