@@ -1,7 +1,11 @@
 import { Button, Container, Heading } from "@/blocks";
+import { GlobalProps } from "@/types";
 
-function Page() {
-  return (
+function Page({page}: GlobalProps) {
+  return page ?(
+    <Container>
+    </Container>
+  ) : (
     <Container>
       <Heading level="h1" variant="h1">
         Welcome to <span className="text-primary">Narsil CMS</span>
@@ -12,7 +16,7 @@ function Page() {
         asChild={true}
         size="lg"
       >
-        <a href="/narsil/dashboard">Website erstellen</a>
+        <a href="/narsil/dashboard">Create now</a>
       </Button>
     </Container>
   );

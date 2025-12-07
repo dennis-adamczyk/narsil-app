@@ -5,5 +5,6 @@ export * from "./models";
 
 export type GlobalProps = {
   locales: HostLocale[];
+  page: Record<string, unknown>;
   footer: Footer;
 };
