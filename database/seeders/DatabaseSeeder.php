@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 #region USE
 
-use Database\Seeders\TemplateSeeder;
 use Database\Seeders\UserSeeder;
 use Illuminate\Database\Seeder;
 
