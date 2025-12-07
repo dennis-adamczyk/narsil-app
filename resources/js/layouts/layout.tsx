@@ -34,7 +34,9 @@ function Layout({ children }: LayoutProps) {
         <div className="flex flex-col justify-between gap-6 sm:flex-row">
           <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
             <div className="flex flex-wrap justify-between gap-6 text-lg font-bold md:items-center md:gap-8 lg:gap-12">
-              NARSIL
+              <a className="text-lg font-bold" href="/">
+                NARSIL
+              </a>
             </div>
             <div className="flex flex-row gap-10">
               <div className="flex flex-col gap-0.5 lg:gap-2">
