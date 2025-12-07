@@ -14,7 +14,7 @@ createInertiaApp({
       eager: true,
     });
 
-    const appKey = `/resources/js/pages/${componentPath}.tsx`;
+    const appKey = `/resources/js/pages/backend/${componentPath}.tsx`;
     const vendorKey = `/vendor/${vendorPath}/resources/js/pages/${componentPath}.tsx`;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
