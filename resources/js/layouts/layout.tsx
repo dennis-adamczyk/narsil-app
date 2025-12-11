@@ -6,6 +6,7 @@ import {
 } from "@/components/dropdown-menu";
 import { IconName } from "@/components/icon";
 import { GlobalProps } from "@/types";
+import { Link } from "@narsil-cms/blocks";
 import { DropdownMenuItem } from "@narsil-cms/components/dropdown-menu";
 
 type LayoutProps = {
@@ -15,7 +16,7 @@ type LayoutProps = {
 };
 
 function Layout({ children }: LayoutProps) {
-  const { footer, locales } = children.props;
+  const { footer, page } = children.props;
 
   return (
     <div className="flex min-h-svh flex-col">
@@ -86,8 +87,12 @@ function Layout({ children }: LayoutProps) {
                 <Button variant="ghost">Language</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                {locales[0]?.languages?.map((language, index) => {
-                  return <DropdownMenuItem key={index}>{language.label}</DropdownMenuItem>;
+                {page?.urls?.map((url, index) => {
+                  return (
+                    <DropdownMenuItem key={index}>
+                      <Link href={url.url}>{url.host_locale_language.display_language}</Link>
+                    </DropdownMenuItem>
+                  );
                 })}
               </DropdownMenuContent>
             </DropdownMenuRoot>
