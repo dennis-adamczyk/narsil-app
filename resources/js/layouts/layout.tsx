@@ -25,7 +25,7 @@ function Layout({ children }: LayoutProps) {
           NARSIL
         </a>
         <nav className="flex gap-8 font-bold">
-          <a className="text-gray-800 hover:text-gray-950" href="/narsil/dashboard">
+          <a className="text-gray-800 hover:text-gray-950" href="/narsil/dashboard" target="_blank">
             admin
           </a>
         </nav>

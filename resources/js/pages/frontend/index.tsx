@@ -1,10 +1,9 @@
 import { Button, Container, Heading } from "@/blocks";
 import { GlobalProps } from "@/types";
 
-function Page({page}: GlobalProps) {
-  return page ?(
-    <Container>
-    </Container>
+function Page({ page }: GlobalProps) {
+  return page ? (
+    <Container></Container>
   ) : (
     <Container>
       <Heading level="h1" variant="h1">
@@ -16,7 +15,9 @@ function Page({page}: GlobalProps) {
         asChild={true}
         size="lg"
       >
-        <a href="/narsil/dashboard">Create now</a>
+        <a href="/narsil/dashboard" target="_blank">
+          Create now
+        </a>
       </Button>
     </Container>
   );
