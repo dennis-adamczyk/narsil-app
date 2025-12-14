@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Inertia\Inertia;
 use Inertia\Response;
 use Narsil\Models\Sites\Site;
@@ -35,6 +36,9 @@ class PageController extends Controller
             'footer' => $page->{SitePage::RELATION_SITE}->{Site::RELATION_FOOTER},
             'header' => $page->{SitePage::RELATION_SITE}->{Site::RELATION_HEADER},
             'page' => $page,
+            'session' => [
+                'locale' => App::getLocale(),
+            ]
         ]);
     }
 

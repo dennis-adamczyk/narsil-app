@@ -5,7 +5,6 @@ namespace App\Http\Middlewares;
 #region USE
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Inertia\Middleware;
 
 #endregions
@@ -50,27 +49,8 @@ class InertiaMiddleware extends Middleware
      */
     public function share(Request $request): array
     {
-        $session = $this->getSession($request);
-
         return [
             ...parent::share($request),
-            'session' => $session,
-        ];
-    }
-
-    #endregion
-
-    #region PRIVATE METHODS
-
-    /**
-     * @param Request $request
-     *
-     * @return array
-     */
-    protected function getSession(Request $request): array
-    {
-        return [
-            'locale' => App::getLocale(),
         ];
     }
 

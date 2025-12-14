@@ -8,7 +8,7 @@ import { IconName } from "@/components/icon";
 import { GlobalProps } from "@/types";
 import { Link } from "@narsil-cms/blocks";
 import { DropdownMenuItem } from "@narsil-cms/components/dropdown-menu";
-import { upperCase } from "lodash";
+import { upperCase, upperFirst } from "lodash";
 import { useMemo } from "react";
 
 type LayoutProps = {
@@ -24,9 +24,11 @@ function Layout({ children }: LayoutProps) {
     () =>
       page?.urls?.find((siteUrl) => {
         return siteUrl.host_locale_language.language === session.locale;
-      }),
-    [page, session],
+      })?.host_locale_language,
+    [page, session.locale],
   );
+
+  console.log(hostlocaleLanguage);
 
   return (
     <div className="flex min-h-svh flex-col">
@@ -94,7 +96,7 @@ function Layout({ children }: LayoutProps) {
             </div>
             <DropdownMenuRoot>
               <DropdownMenuTrigger asChild={true}>
-                <Button variant="ghost">{`${hostlocaleLanguage?.display_language} (${upperCase(hostlocaleLanguage?.language)})`}</Button>
+                <Button variant="ghost">{`${upperFirst(hostlocaleLanguage?.display_language)} (${upperCase(hostlocaleLanguage?.language)})`}</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 {page?.urls?.map((url, index) => {
