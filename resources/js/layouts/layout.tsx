@@ -28,8 +28,6 @@ function Layout({ children }: LayoutProps) {
     [page, session.locale],
   );
 
-  console.log(hostlocaleLanguage);
-
   return (
     <div className="flex min-h-svh flex-col">
       <header className="bg-light sticky top-0 right-0 left-0 z-10 flex w-full items-center justify-between py-2 pr-2 pl-4 text-slate-950 md:px-4 md:py-4 lg:px-14 xl:px-20">

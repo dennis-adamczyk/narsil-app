@@ -49,7 +49,8 @@ final class TemplateSeeder extends Seeder
         {
             $event = new Entity([
                 Entity::ID => $index,
-                'title' => fake()->slug(),
+                Entity::SLUG => fake()->slug(1),
+                'title' => fake()->words(3, true),
             ]);
 
             $event->save();
@@ -71,7 +72,8 @@ final class TemplateSeeder extends Seeder
 
         $page = new Entity([
             Entity::ID => 1,
-            'title' => fake()->slug(),
+            Entity::SLUG => fake()->slug(1),
+            'title' => fake()->words(3, true),
         ]);
 
         $page->save();
