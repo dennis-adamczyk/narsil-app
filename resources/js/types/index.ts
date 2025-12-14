@@ -4,7 +4,10 @@ import { Footer } from "./models";
 export * from "./models";
 
 export type GlobalProps = {
+  footer: Footer;
   locales: HostLocale[];
   page: Record<string, unknown> & { urls: SiteUrl[] };
-  footer: Footer;
+  session: {
+    locale: string;
+  };
 };
