@@ -1,10 +1,12 @@
 import type { EntityBlock } from "@narsil-cms/types";
 import Accordion from "./accordion";
+import HeroHeader from "./hero-header";
 
 type BlockRendererProps = EntityBlock & {};
 
 const blocks = {
-  accordion: Accordion,
+  ["accordion"]: Accordion,
+  ["hero-header"]: HeroHeader,
 };
 
 type BlockName = keyof typeof blocks;
