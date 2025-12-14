@@ -6,28 +6,20 @@ import {
   AccordionRoot,
   AccordionTrigger,
 } from "@/components/accordion";
-import { type ComponentProps, type ReactNode } from "react";
+import { EntityBlock } from "@narsil-cms/types";
 
-type AccordionElement = {
-  id: string;
-  title: string;
-  content: ReactNode;
-};
+type AccordionProps = EntityBlock & {};
 
-type AccordionProps = ComponentProps<typeof AccordionRoot> & {
-  elements: AccordionElement[];
-};
-
-function Accordion({ elements, ...props }: AccordionProps) {
+function Accordion({ children }: AccordionProps) {
   return (
-    <AccordionRoot {...props}>
-      {elements.map((element) => {
+    <AccordionRoot className="min-w-96" collapsible={true} type="single">
+      {children.map((child) => {
         return (
-          <AccordionItem value={element.id} key={element.id}>
+          <AccordionItem value={child.uuid} key={child.uuid}>
             <AccordionHeader asChild>
               <Heading level="h2">
                 <AccordionTrigger>
-                  {element.title}
+                  {child.fields[0].value}
                   <Icon
                     className={
                       "transition-transform duration-300 will-change-transform group-data-[state=open]:rotate-180"
@@ -37,7 +29,12 @@ function Accordion({ elements, ...props }: AccordionProps) {
                 </AccordionTrigger>
               </Heading>
             </AccordionHeader>
-            <AccordionContent>{element.content}</AccordionContent>
+            <AccordionContent>
+              <div
+                className="prose pb-4"
+                dangerouslySetInnerHTML={{ __html: child.fields[1].value }}
+              />
+            </AccordionContent>
           </AccordionItem>
         );
       })}

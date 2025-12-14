@@ -1,4 +1,4 @@
-import { HostLocale, SiteUrl } from "@narsil-cms/types";
+import { Entity, HostLocale, SiteUrl } from "@narsil-cms/types";
 import { Footer } from "./models";
 
 export * from "./models";
@@ -6,7 +6,7 @@ export * from "./models";
 export type GlobalProps = {
   footer: Footer;
   locales: HostLocale[];
-  page: Record<string, unknown> & { urls: SiteUrl[] };
+  page: { content: string[]; entities: Record<string, Entity>; urls: SiteUrl[] };
   session: {
     locale: string;
   };
