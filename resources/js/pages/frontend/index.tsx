@@ -19,16 +19,17 @@ function Page({ page }: GlobalProps) {
         <meta property="og:type" content={page.open_graph_type || "website"} />
       </Head>
       <Container>
-        {page.content.map((identifier, index) => {
-          const entity = page.entities[identifier];
-          return (
-            <Fragment key={index}>
-              {entity.blocks.map((entityBlock, index) => (
-                <BlockRenderer {...entityBlock} key={index} />
-              ))}
-            </Fragment>
-          );
-        })}
+        {page.content &&
+          page.content.map((identifier, index) => {
+            const entity = page.entities[identifier];
+            return (
+              <Fragment key={index}>
+                {entity.blocks.map((entityBlock, index) => (
+                  <BlockRenderer {...entityBlock} key={index} />
+                ))}
+              </Fragment>
+            );
+          })}
       </Container>
     </>
   );
