@@ -12,9 +12,9 @@ const blocks = {
 type BlockName = keyof typeof blocks;
 
 function BlockRenderer({ ...props }: BlockRendererProps) {
-  const BlockComponent = blocks[props.block.handle as BlockName];
+  const BlockComponent = blocks[Object.keys(props)[0] as BlockName];
 
-  return BlockComponent ? <BlockComponent {...props} /> : null;
+  return BlockComponent ? <BlockComponent {...Object.values(props)[0]} /> : null;
 }
 
 export default BlockRenderer;

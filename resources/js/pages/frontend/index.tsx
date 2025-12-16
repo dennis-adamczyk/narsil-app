@@ -22,6 +22,7 @@ function Page({ page }: GlobalProps) {
         {page.content &&
           page.content.map((identifier, index) => {
             const entity = page.entities[identifier];
+
             return (
               <Fragment key={index}>
                 {entity.blocks.map((entityBlock, index) => (

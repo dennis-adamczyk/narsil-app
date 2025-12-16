@@ -3,23 +3,27 @@ import Button from "./button";
 import Container from "./container";
 import Heading from "./heading";
 
-type HeroHeaderProps = EntityBlock & {};
+type HeroHeaderProps = EntityBlock & {
+  excerpt: string;
+  headline: string;
+  hero_header_buttons: EntityBlock[];
+};
 
-function HeroHeader({ ...props }: HeroHeaderProps) {
+function HeroHeader({ excerpt, headline, ...props }: HeroHeaderProps) {
   return (
     <Container>
       <Heading level="h1" variant="h1">
-        {props.fields[0].value}
+        {headline}
       </Heading>
-      <div dangerouslySetInnerHTML={{ __html: props.fields[1].value }} />
+      <div dangerouslySetInnerHTML={{ __html: excerpt }} />
       <Button
         className="transition-transform duration-200 will-change-transform hover:scale-105"
         asChild={true}
         size="lg"
       >
-        <a href={props.fields[2].value} target="_blank">
+        {/* <a href={props.fields[2].value} target="_blank">
           Create now
-        </a>
+        </a> */}
       </Button>
     </Container>
   );
