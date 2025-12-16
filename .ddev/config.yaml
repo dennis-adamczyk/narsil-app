@@ -34,6 +34,9 @@ hooks:
     - exec: php artisan migrate
       service: web
       directory: /var/www/html
+    - exec: php artisan storage:link
+      service: web
+      directory: /var/www/html
     - exec: yarn
       service: web
       directory: /var/www/html
