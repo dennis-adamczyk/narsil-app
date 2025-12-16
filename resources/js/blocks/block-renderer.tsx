@@ -6,7 +6,7 @@ type BlockRendererProps = EntityBlock & {};
 
 const blocks = {
   ["accordion"]: Accordion,
-  ["hero-header"]: HeroHeader,
+  ["hero_header"]: HeroHeader,
 };
 
 type BlockName = keyof typeof blocks;
@@ -14,7 +14,7 @@ type BlockName = keyof typeof blocks;
 function BlockRenderer({ ...props }: BlockRendererProps) {
   const BlockComponent = blocks[props.block.handle as BlockName];
 
-  return <BlockComponent {...props} />;
+  return BlockComponent ? <BlockComponent {...props} /> : null;
 }
 
 export default BlockRenderer;

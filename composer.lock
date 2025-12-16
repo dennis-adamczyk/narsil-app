@@ -1201,16 +1201,16 @@
         },
         {
             "name": "inertiajs/inertia-laravel",
-            "version": "v2.0.14",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inertiajs/inertia-laravel.git",
-                "reference": "c4a7bbefbfb9995ce2189f1665ba73276cb3cb6f"
+                "reference": "e86a3a82c9fca27454f7516b67790445b1001e94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/c4a7bbefbfb9995ce2189f1665ba73276cb3cb6f",
-                "reference": "c4a7bbefbfb9995ce2189f1665ba73276cb3cb6f",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/e86a3a82c9fca27454f7516b67790445b1001e94",
+                "reference": "e86a3a82c9fca27454f7516b67790445b1001e94",
                 "shasum": ""
             },
             "require": {
@@ -1265,9 +1265,9 @@
             ],
             "support": {
                 "issues": "https://github.com/inertiajs/inertia-laravel/issues",
-                "source": "https://github.com/inertiajs/inertia-laravel/tree/v2.0.14"
+                "source": "https://github.com/inertiajs/inertia-laravel/tree/v2.0.15"
             },
-            "time": "2025-12-10T13:29:20+00:00"
+            "time": "2025-12-15T14:47:18+00:00"
         },
         {
             "name": "laragraph/utils",
@@ -2608,7 +2608,7 @@
             "dist": {
                 "type": "path",
                 "url": "../narsil-cms",
-                "reference": "44a8015147f702ee7d36dbfb4ae861fde7f05509"
+                "reference": "63d6b637fdcf35fc8f49a90a52e09b2121c939e9"
             },
             "require": {
                 "inertiajs/inertia-laravel": "^2.0",
@@ -3827,16 +3827,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.12.16",
+            "version": "v0.12.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "ee6d5028be4774f56c6c2c85ec4e6bc9acfe6b67"
+                "reference": "85fbbd9f3064e157fc21fe4362b2b5c19f2ea631"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/ee6d5028be4774f56c6c2c85ec4e6bc9acfe6b67",
-                "reference": "ee6d5028be4774f56c6c2c85ec4e6bc9acfe6b67",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/85fbbd9f3064e157fc21fe4362b2b5c19f2ea631",
+                "reference": "85fbbd9f3064e157fc21fe4362b2b5c19f2ea631",
                 "shasum": ""
             },
             "require": {
@@ -3900,9 +3900,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.12.16"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.12.17"
             },
-            "time": "2025-12-07T03:39:01+00:00"
+            "time": "2025-12-15T04:55:34+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -7018,16 +7018,16 @@
         },
         {
             "name": "webonyx/graphql-php",
-            "version": "v15.27.2",
+            "version": "v15.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webonyx/graphql-php.git",
-                "reference": "7fc996bb201ce3bf1d803b8e0336e8f2beb029e9"
+                "reference": "7eda5ab49f1f5e847e5c1a477b6b1b18a8fa2302"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/7fc996bb201ce3bf1d803b8e0336e8f2beb029e9",
-                "reference": "7fc996bb201ce3bf1d803b8e0336e8f2beb029e9",
+                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/7eda5ab49f1f5e847e5c1a477b6b1b18a8fa2302",
+                "reference": "7eda5ab49f1f5e847e5c1a477b6b1b18a8fa2302",
                 "shasum": ""
             },
             "require": {
@@ -7040,7 +7040,7 @@
                 "amphp/http-server": "^2.1",
                 "dms/phpunit-arraysubset-asserts": "dev-master",
                 "ergebnis/composer-normalize": "^2.28",
-                "friendsofphp/php-cs-fixer": "3.91.3",
+                "friendsofphp/php-cs-fixer": "3.92.0",
                 "mll-lab/php-cs-fixer-config": "5.11.0",
                 "nyholm/psr7": "^1.5",
                 "phpbench/phpbench": "^1.2",
@@ -7081,7 +7081,7 @@
             ],
             "support": {
                 "issues": "https://github.com/webonyx/graphql-php/issues",
-                "source": "https://github.com/webonyx/graphql-php/tree/v15.27.2"
+                "source": "https://github.com/webonyx/graphql-php/tree/v15.28.0"
             },
             "funding": [
                 {
@@ -7089,7 +7089,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-12-09T07:30:56+00:00"
+            "time": "2025-12-15T09:49:09+00:00"
         }
     ],
     "packages-dev": [
@@ -8183,16 +8183,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.5.3",
+            "version": "12.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6dc2e076d09960efbb0c1272aa9bc156fc80955e"
+                "reference": "4ba0e923f9d3fc655de22f9547c01d15a41fc93a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6dc2e076d09960efbb0c1272aa9bc156fc80955e",
-                "reference": "6dc2e076d09960efbb0c1272aa9bc156fc80955e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4ba0e923f9d3fc655de22f9547c01d15a41fc93a",
+                "reference": "4ba0e923f9d3fc655de22f9547c01d15a41fc93a",
                 "shasum": ""
             },
             "require": {
@@ -8260,7 +8260,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.3"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.4"
             },
             "funding": [
                 {
@@ -8284,7 +8284,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-11T08:52:59+00:00"
+            "time": "2025-12-15T06:05:34+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9371,5 +9371,5 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
