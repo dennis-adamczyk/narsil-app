@@ -37,7 +37,8 @@ final class PageSeeder
             $template = Template::firstOrCreate([
                 Template::HANDLE => 'pages',
             ], [
-                Template::NAME => 'pages',
+                Template::PLURAL => 'pages',
+                Template::SINGULAR => 'page',
             ]);
 
             $this->createMainSection($template);

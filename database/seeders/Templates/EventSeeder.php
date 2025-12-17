@@ -31,7 +31,8 @@ final class EventSeeder
             $template = Template::firstOrCreate([
                 Template::HANDLE => 'events',
             ], [
-                Template::NAME => 'events',
+                Template::PLURAL => 'events',
+                Template::SINGULAR => 'event',
             ]);
 
             $this->createMainSection($template);
