@@ -1,30 +1,30 @@
-import type { EntityBlock } from "@narsil-cms/types";
-import Button from "./button";
+import type { SitePageBlock } from "@/types";
+import BlockRenderer from "./block-renderer";
 import Container from "./container";
 import Heading from "./heading";
 
-type HeroHeaderProps = EntityBlock & {
+type HeroHeaderProps = {
   excerpt: string;
   headline: string;
-  hero_header_buttons: EntityBlock[];
+  hero_header_buttons: SitePageBlock[];
 };
 
-function HeroHeader({ excerpt, headline, ...props }: HeroHeaderProps) {
+function HeroHeader({ excerpt, headline, hero_header_buttons }: HeroHeaderProps) {
   return (
     <Container>
       <Heading level="h1" variant="h1">
         {headline}
       </Heading>
       <div dangerouslySetInnerHTML={{ __html: excerpt }} />
-      <Button
-        className="transition-transform duration-200 will-change-transform hover:scale-105"
-        asChild={true}
-        size="lg"
-      >
-        {/* <a href={props.fields[2].value} target="_blank">
-          Create now
-        </a> */}
-      </Button>
+      {hero_header_buttons.map((button, index) => {
+        button = {
+          ...button,
+          className: "transition-transform duration-200 will-change-transform hover:scale-105",
+          size: "lg",
+        };
+
+        return <BlockRenderer block={button} key={index} />;
+      })}
     </Container>
   );
 }

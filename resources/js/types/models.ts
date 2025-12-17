@@ -21,3 +21,27 @@ export type FooterLegalLink = {
   url: string;
   position: number;
 };
+
+export type SitePage = {
+  content: {
+    blocks: SitePageBlock[];
+  };
+  meta_description: string;
+  open_graph_description: string;
+  open_graph_image: string;
+  open_graph_title: string;
+  open_graph_type: string;
+  title: string;
+  urls: SiteUrl[];
+};
+
+export type SitePageBlock = {
+  handle: string;
+  [key: string]: unknown;
+};
+
+export type SiteUrl = {
+  display_language: string;
+  language: string;
+  url: string;
+};

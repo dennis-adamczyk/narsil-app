@@ -2,7 +2,6 @@ import { Container } from "@/blocks";
 import BlockRenderer from "@/blocks/block-renderer";
 import { GlobalProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import { Fragment } from "react/jsx-runtime";
 
 function Page({ page }: GlobalProps) {
   return (
@@ -20,16 +19,8 @@ function Page({ page }: GlobalProps) {
       </Head>
       <Container>
         {page.content &&
-          page.content.map((identifier, index) => {
-            const entity = page.entities[identifier];
-
-            return (
-              <Fragment key={index}>
-                {entity.blocks.map((entityBlock, index) => (
-                  <BlockRenderer {...entityBlock} key={index} />
-                ))}
-              </Fragment>
-            );
+          page.content.blocks.map((block, index) => {
+            return <BlockRenderer block={block} key={index} />;
           })}
       </Container>
     </>

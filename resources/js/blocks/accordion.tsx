@@ -6,20 +6,26 @@ import {
   AccordionRoot,
   AccordionTrigger,
 } from "@/components/accordion";
-import { EntityBlock } from "@narsil-cms/types";
+import { SitePageBlock } from "@/types";
 
-type AccordionProps = EntityBlock & {};
+type AccordionProps = {
+  accordion_builder: SitePageBlock &
+    {
+      accordion_item_content: string;
+      accordion_item_trigger: string;
+    }[];
+};
 
-function Accordion({ children }: AccordionProps) {
+function Accordion({ accordion_builder }: AccordionProps) {
   return (
     <AccordionRoot className="min-w-96" collapsible={true} type="single">
-      {children.map((child) => {
+      {accordion_builder.map((item, index) => {
         return (
-          <AccordionItem value={child.uuid} key={child.uuid}>
+          <AccordionItem value={index.toString()} key={index}>
             <AccordionHeader asChild>
               <Heading level="h2">
                 <AccordionTrigger>
-                  {child.fields[0].value}
+                  {item.accordion_item_trigger}
                   <Icon
                     className={
                       "transition-transform duration-300 will-change-transform group-data-[state=open]:rotate-180"
@@ -32,7 +38,7 @@ function Accordion({ children }: AccordionProps) {
             <AccordionContent>
               <div
                 className="prose pb-4"
-                dangerouslySetInnerHTML={{ __html: child.fields[1].value }}
+                dangerouslySetInnerHTML={{ __html: item.accordion_item_content }}
               />
             </AccordionContent>
           </AccordionItem>

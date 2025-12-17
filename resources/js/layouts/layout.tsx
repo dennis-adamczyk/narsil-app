@@ -20,11 +20,11 @@ type LayoutProps = {
 function Layout({ children }: LayoutProps) {
   const { footer, page, session } = children.props;
 
-  const hostlocaleLanguage = useMemo(
+  const siteUrl = useMemo(
     () =>
       page?.urls?.find((siteUrl) => {
-        return siteUrl.host_locale_language.language === session.locale;
-      })?.host_locale_language,
+        return siteUrl.language === session.locale;
+      }),
     [page, session.locale],
   );
 
@@ -94,13 +94,13 @@ function Layout({ children }: LayoutProps) {
             </div>
             <DropdownMenuRoot>
               <DropdownMenuTrigger asChild={true}>
-                <Button variant="ghost">{`${upperFirst(hostlocaleLanguage?.display_language)} (${upperCase(hostlocaleLanguage?.language)})`}</Button>
+                <Button variant="ghost">{`${upperFirst(siteUrl?.display_language)} (${upperCase(siteUrl?.language)})`}</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 {page?.urls?.map((url, index) => {
                   return (
                     <DropdownMenuItem asChild={true} key={index}>
-                      <Link href={url.url}>{url.host_locale_language.display_language}</Link>
+                      <Link href={url.url}>{url.display_language}</Link>
                     </DropdownMenuItem>
                   );
                 })}
