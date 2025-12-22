@@ -1,6 +1,6 @@
 import { createInertiaApp } from "@inertiajs/react";
 import { type ComponentProps } from "react";
-import { hydrateRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import Layout from "./layouts/layout";
 
 createInertiaApp({
@@ -25,6 +25,10 @@ createInertiaApp({
     return page;
   },
   setup({ el, App, props }) {
-    hydrateRoot(el, <App {...props} />);
+    if (import.meta.env.DEV) {
+      createRoot(el).render(<App {...props} />);
+    } else {
+      hydrateRoot(el, <App {...props} />);
+    }
   },
 });
