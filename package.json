@@ -6,7 +6,7 @@
     "vendor/narsil/cms"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && vite build --ssr",
     "dev": "vite",
     "format:check": "prettier --check resources/js/**/*.{ts,tsx} vendor/narsil/cms/resources/js/**/*.{ts,tsx}",
     "format:write": "prettier --write resources/js/**/*.{ts,tsx} vendor/narsil/cms/resources/js/**/*.{ts,tsx}",
