@@ -1,5 +1,5 @@
 import { cn } from "@narsil-cms/lib/utils";
-import { startCase } from "lodash";
+import { startCase } from "lodash-es";
 import { type ComponentProps } from "react";
 import { type IconName, icons } from "./icon-registry";
 
@@ -13,7 +13,7 @@ function IconRoot({ className, name, ...props }: IconRootProps) {
   return (
     <Comp
       data-slot="icon-root"
-      className={cn("text-primary size-5", className)}
+      className={cn("size-5 text-primary", className)}
       aria-label={startCase(name)}
       {...props}
     />

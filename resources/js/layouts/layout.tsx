@@ -8,7 +8,7 @@ import { IconName } from "@/components/icon";
 import { GlobalProps } from "@/types";
 import { Link } from "@narsil-cms/blocks";
 import { DropdownMenuItem } from "@narsil-cms/components/dropdown-menu";
-import { upperCase, upperFirst } from "lodash";
+import { upperCase, upperFirst } from "lodash-es";
 import { useMemo } from "react";
 
 type LayoutProps = {
