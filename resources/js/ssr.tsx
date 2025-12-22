@@ -1,13 +1,17 @@
 import { createInertiaApp } from "@inertiajs/react";
 import createServer from "@inertiajs/react/server";
 import { type ComponentProps } from "react";
-import ReactDOMServer from "react-dom/server";
+import { renderToReadableStream, renderToString } from "react-dom/server";
 import Layout from "./layouts/layout";
 
 createServer((page) =>
   createInertiaApp({
     page,
-    render: ReactDOMServer.renderToString,
+    render: (async (element: React.ReactNode) => {
+      const stream = await renderToReadableStream(element);
+      await stream.allReady;
+      return new Response(stream).text();
+    }) as unknown as typeof renderToString,
     resolve: (name) => {
       const appPages = import.meta.glob("@/pages/**/*.tsx", {
         eager: true,
