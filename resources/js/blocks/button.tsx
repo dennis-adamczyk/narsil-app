@@ -8,9 +8,9 @@ import { type ComponentProps } from "react";
 type ButtonProps = ComponentProps<typeof ButtonRoot> & {
   icon?: IconName;
   iconProps?: ComponentProps<typeof Icon>;
-  label: string;
+  label?: string;
   linkProps?: ComponentProps<typeof Link>;
-  url: string;
+  url?: string;
 };
 
 function Button({ children, icon, label, url, ...props }: ButtonProps) {
