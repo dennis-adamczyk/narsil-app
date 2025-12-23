@@ -2608,7 +2608,7 @@
             "dist": {
                 "type": "path",
                 "url": "../narsil-cms",
-                "reference": "eadf6bcc9fc04665823f91b7ebee015e3b9f3f50"
+                "reference": "19a7d6c38014ac3e450a62a4b7a794561c7416a0"
             },
             "require": {
                 "inertiajs/inertia-laravel": "^2.0",
@@ -2859,12 +2859,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "b8334e6a9bd645c6b7662b527c163f4a7eb0cbde"
+                "reference": "c99059c0315591f1a0db7ad6002000288ab8dc72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/b8334e6a9bd645c6b7662b527c163f4a7eb0cbde",
-                "reference": "b8334e6a9bd645c6b7662b527c163f4a7eb0cbde",
+                "url": "https://api.github.com/repos/nette/utils/zipball/c99059c0315591f1a0db7ad6002000288ab8dc72",
+                "reference": "c99059c0315591f1a0db7ad6002000288ab8dc72",
                 "shasum": ""
             },
             "require": {
@@ -2940,7 +2940,7 @@
                 "issues": "https://github.com/nette/utils/issues",
                 "source": "https://github.com/nette/utils/tree/v4.1.1"
             },
-            "time": "2025-12-22T12:06:15+00:00"
+            "time": "2025-12-22T12:14:32+00:00"
         },
         {
             "name": "nikic/php-parser",
